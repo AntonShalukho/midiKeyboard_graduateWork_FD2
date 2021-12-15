@@ -33,13 +33,16 @@ const title = document.createElement('div');
 const songNames = document.createElement('div');
 const song1 = document.createElement('div');
 const song2 = document.createElement('div');
+const song3 = document.createElement('div');
 const song1Text = document.createElement('div');
 const song2Text = document.createElement('div');
+const song3Text = document.createElement('div');
 const butt = document.createElement('div');
 const buttBack = document.createElement('div');
 const buttPlay = document.createElement('div');
-const song1TextContent = `S   H   H   F   D   D   D   D F / 3 раза`;
-const song2TextContent = `G  D D  G  D D  G F D S A  H  K H  G  D D  G F D S A H  K H  G  D D  G F D S A`;
+const song1TextContent = `S  H H  F  D D D  D F / 3 раза`;
+const song2TextContent = `G  D D  G  D D  G F D S A    H  K H  G  D D  G F D S A    H  K H  G  D D  G F D S A`;
+const song3TextContent = `D  G G G G  H  D  G G G G G  A  H H H H  K J  H G G G G  A  K J K J H J  H G  G J  S D F H G`;
 
 note.style.cssText = `
     width: 70%;
@@ -50,23 +53,27 @@ note.style.cssText = `
     flex-direction: column;
 `;
 
-title.style.cssText = `font-size: 24px;`;
-song1.style.cssText = `font-size: 20px; cursor: pointer`;
-song2.style.cssText = `font-size: 20px; cursor: pointer`;
-song1Text.style.cssText = `font-size: 24px; display: none; justify-self: center; align-self: center;`;
-song2Text.style.cssText = `font-size: 24px; display: none; justify-self: center; align-self: center;`;
+title.style.cssText = `font-size: 24px; padding: 20px`;
+song2.style.cssText = `font-size: 20px; cursor: pointer; padding-left: 10px; padding-bottom: 5px;`;
+song3.style.cssText = `font-size: 20px; cursor: pointer; padding-left: 10px; padding-bottom: 5px;`;
+song1.style.cssText = `font-size: 20px; cursor: pointer; padding-left: 10px; padding-bottom: 5px;`;
+song1Text.style.cssText = `font-size: 24px; display: none; justify-self: center; align-self: center;padding: 10px;`;
+song2Text.style.cssText = `font-size: 24px; display: none; justify-self: center; align-self: center;padding: 10px;`;
+song3Text.style.cssText = `font-size: 24px; display: none; justify-self: center; align-self: center;padding: 10px;`;
 butt.style.cssText = `display: none; flex-direction: row; justify-content: end; align-items: end;`;
 buttBack.style.cssText = `width: 8%; height: 50%; border: 1px solid black; display: flex; justify-content: center; align-items: center; 
                         cursor: pointer; margin: 1%; justify-self: end; align-self: end;`;
-buttPlay.style.cssText = `width: 12%; height: 50%; border: 1px solid black; display: flex; justify-content: center; align-items: center; 
+buttPlay.style.cssText = `width: 8%; height: 50%; border: 1px solid black; display: flex; justify-content: center; align-items: center; 
                         cursor: pointer; margin: 1%; justify-self: end; align-self: end;`;
-title.textContent = `Просто выбери что понравилось:`;
+title.textContent = `Просто выбери что понравилось или сочини сам:`;
 song1.textContent = `In the end(Linkin park),`;
 song2.textContent = `Ёлочка,`;
-song1Text.textContent = `${song1TextContent}`;
-song2Text.textContent = `${song2TextContent}`;
-buttBack.textContent = `Назад`
-buttPlay.textContent = `Проиграть`
+song3.textContent = `Песенка Мамонтёнка`;
+song1Text.textContent = `S..HH..F..DDD..DF / 3 раза`;
+song2Text.textContent = `G..DD..G..DD..GFDSA....H..KH..G..DD..GFDSA...H..KH..G..DD..GFDSA`;
+song3Text.textContent = `D..GGGG..H..D..GGGGG...A..HHHH.K..J.HGGGG...A..KJKJ.H..J.HG..G.J..SDF..HG`;
+buttBack.textContent = `Back`
+buttPlay.textContent = `Play`
 
 /* 
             Клавиши пианино  
@@ -147,8 +154,10 @@ note.insertAdjacentElement('beforeend', title);
 note.insertAdjacentElement('beforeend', songNames);
 songNames.insertAdjacentElement('beforeend', song1);
 songNames.insertAdjacentElement('beforeend', song2);
+songNames.insertAdjacentElement('beforeend', song3);
 note.insertAdjacentElement('beforeend', song1Text);
 note.insertAdjacentElement('beforeend', song2Text);
+note.insertAdjacentElement('beforeend', song3Text);
 note.insertAdjacentElement('beforeend', butt);
 butt.insertAdjacentElement('beforeend', buttBack);
 butt.insertAdjacentElement('beforeend', buttPlay);
@@ -381,11 +390,18 @@ song2.onclick = () => {
     song2Text.style.display = 'flex';
     butt.style.display = 'flex'
 };
+song3.onclick = () => {
+    title.style.display = 'none'; 
+    songNames.style.display = 'none'; 
+    song3Text.style.display = 'flex';
+    butt.style.display = 'flex'
+};
 buttBack.onclick = () => {
     title.style.display = 'block'; 
     songNames.style.display = 'block';
     song1Text.style.display = 'none'; 
     song2Text.style.display = 'none'; 
+    song3Text.style.display = 'none'; 
     butt.style.display = 'none'
 };
 buttPlay.onclick = () => {
@@ -395,19 +411,19 @@ buttPlay.onclick = () => {
     if (song2Text.style.display == 'flex') {
         playSong(song2TextContent)
     }
+    if (song3Text.style.display == 'flex') {
+        playSong(song3TextContent)
+    }
 }
 
 function playSong(song) {
     let acc = song.split(' ');
-    console.log(acc);
     let time1 = 0;
-    let time2 = 700;
+    let time2 = 500;
 
     acc.forEach(item => {
-        console.log(Object.keys(whiteKeys).length)
         
         for (let i = 0; i < Object.keys(whiteKeys).length; i++) {
-            console.log(item == whiteKeys[Object.keys(whiteKeys)[1]].keyName)
             if (item == whiteKeys[Object.keys(whiteKeys)[i]].keyName) {
                 setTimeout(() => {
                     whiteKeys[Object.keys(whiteKeys)[i]].keyCode.style.backgroundColor = `bisque`;
@@ -418,13 +434,13 @@ function playSong(song) {
     
                     setTimeout(() => {
                         whiteKeys[Object.keys(whiteKeys)[i]].keyCode.style.backgroundColor = `white`;
-                        whiteKeys[Object.keys(whiteKeys)[i]].keyCode.style.border = `ipx solid black`;
+                        whiteKeys[Object.keys(whiteKeys)[i]].keyCode.style.border = `1px solid black`;
                         whiteKeys[Object.keys(whiteKeys)[i]].keyCode.style.height = `90%`; 
                         whiteKeys[Object.keys(whiteKeys)[i]].keyCode.style.width = `6.66%`; 
                         whiteKeys[Object.keys(whiteKeys)[i]].audio.load();
                     }, `${time2}`)
                 }, `${time1}`);
-                time1 += 800; 
+                time1 += 600; 
             }
         }
     })
