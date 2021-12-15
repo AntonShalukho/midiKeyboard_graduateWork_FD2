@@ -32,10 +32,14 @@ const note = document.createElement('div');
 const title = document.createElement('div');
 const songNames = document.createElement('div');
 const song1 = document.createElement('div');
+const song2 = document.createElement('div');
 const song1Text = document.createElement('div');
+const song2Text = document.createElement('div');
 const butt = document.createElement('div');
 const buttBack = document.createElement('div');
 const buttPlay = document.createElement('div');
+const song1TextContent = `S   H   H   F   D   D   D   D F / 3 раза`;
+const song2TextContent = `G  D D  G  D D  G F D S A  H  K H  G  D D  G F D S A H  K H  G  D D  G F D S A`;
 
 note.style.cssText = `
     width: 70%;
@@ -48,15 +52,19 @@ note.style.cssText = `
 
 title.style.cssText = `font-size: 24px;`;
 song1.style.cssText = `font-size: 20px; cursor: pointer`;
+song2.style.cssText = `font-size: 20px; cursor: pointer`;
 song1Text.style.cssText = `font-size: 24px; display: none; justify-self: center; align-self: center;`;
+song2Text.style.cssText = `font-size: 24px; display: none; justify-self: center; align-self: center;`;
 butt.style.cssText = `display: none; flex-direction: row; justify-content: end; align-items: end;`;
 buttBack.style.cssText = `width: 8%; height: 50%; border: 1px solid black; display: flex; justify-content: center; align-items: center; 
                         cursor: pointer; margin: 1%; justify-self: end; align-self: end;`;
-buttPlay.style.cssText = `width: 8%; height: 50%; border: 1px solid black; display: flex; justify-content: center; align-items: center; 
+buttPlay.style.cssText = `width: 12%; height: 50%; border: 1px solid black; display: flex; justify-content: center; align-items: center; 
                         cursor: pointer; margin: 1%; justify-self: end; align-self: end;`;
-title.textContent = `Вы можете выбрать шаблон:`;
+title.textContent = `Просто выбери что понравилось:`;
 song1.textContent = `In the end(Linkin park),`;
-song1Text.textContent = `S H H F D D D DF / 3 раза`;
+song2.textContent = `Ёлочка,`;
+song1Text.textContent = `${song1TextContent}`;
+song2Text.textContent = `${song2TextContent}`;
 buttBack.textContent = `Назад`
 buttPlay.textContent = `Проиграть`
 
@@ -138,7 +146,9 @@ body.insertAdjacentElement('beforeend', piano);
 note.insertAdjacentElement('beforeend', title);
 note.insertAdjacentElement('beforeend', songNames);
 songNames.insertAdjacentElement('beforeend', song1);
+songNames.insertAdjacentElement('beforeend', song2);
 note.insertAdjacentElement('beforeend', song1Text);
+note.insertAdjacentElement('beforeend', song2Text);
 note.insertAdjacentElement('beforeend', butt);
 butt.insertAdjacentElement('beforeend', buttBack);
 butt.insertAdjacentElement('beforeend', buttPlay);
@@ -158,31 +168,31 @@ piano.insertAdjacentElement('beforeend', keyLya2);
 piano.insertAdjacentElement('beforeend', keySi2);
 piano.insertAdjacentElement('beforeend', keyDo3);
 
-const audioDo1 = new Audio('./audio/long/do.mp3');
-const audioBlackKeyC1 = new Audio('./audio/piano-002.mp3'); 
-const audioRe1 = new Audio('./audio/long/re.mp3');
-const audioBlackKeyD1 = new Audio('./audio/piano-004.mp3'); 
-const audioMi1 = new Audio('./audio/long/mi.mp3');
-const audioFa1 = new Audio('./audio/long/fa.mp3');
-const audioBlackKeyF1 = new Audio('./audio/piano-007.mp3'); 
-const audioSol1 = new Audio('./audio/long/sol.mp3');
-const audioBlackKeyG1 = new Audio('./audio/piano-009.mp3'); 
-const audioLya1 = new Audio('./audio/long/lya.mp3');
-const audioBlackKeyA1 = new Audio('./audio/piano-011.mp3'); 
-const audioSi1 = new Audio('./audio/long/si.mp3');
-const audioDo2 = new Audio('./audio/long/doVtoroyOktave.mp3');
-const audioBlackKeyC2 = new Audio('./audio/piano 2-002.mp3'); 
-const audioRe2 = new Audio('./audio/piano 2-003.mp3');
-const audioBlackKeyD2 = new Audio('./audio/piano 2-004.mp3'); 
-const audioMi2 = new Audio('./audio/piano 2-005.mp3');
-const audioFa2 = new Audio('./audio/piano 2-006.mp3');
-const audioBlackKeyF2 = new Audio('./audio/piano 2-007.mp3'); 
-const audioSol2 = new Audio('./audio/piano 2-008.mp3');
-const audioBlackKeyG2 = new Audio('./audio/piano 2-009.mp3'); 
-const audioLya2 = new Audio('./audio/piano 2-010.mp3');
-const audioBlackKeyA2 = new Audio('./audio/piano 2-011.mp3'); 
-const audioSi2 = new Audio('./audio/piano 2-012.mp3');
-const audioDo3 = new Audio('./audio/до 3й актавы.mp3');
+const audioDo1 = new Audio('./audio/right_piano/do1.mp3');
+const audioBlackKeyC1 = new Audio('./audio/right_piano/do1D.mp3'); 
+const audioRe1 = new Audio('./audio/right_piano/re1.mp3');
+const audioBlackKeyD1 = new Audio('./audio/right_piano/re1D.mp3'); 
+const audioMi1 = new Audio('./audio/right_piano/mi1.mp3');
+const audioFa1 = new Audio('./audio/right_piano/fa1.mp3');
+const audioBlackKeyF1 = new Audio('./audio/right_piano/fa1D.mp3'); 
+const audioSol1 = new Audio('./audio/right_piano/sol1.mp3');
+const audioBlackKeyG1 = new Audio('./audio/right_piano/sol1D.mp3'); 
+const audioLya1 = new Audio('./audio/right_piano/lya1.mp3');
+const audioBlackKeyA1 = new Audio('./audio/right_piano/lya1D.mp3'); 
+const audioSi1 = new Audio('./audio/right_piano/si1.mp3');
+const audioDo2 = new Audio('./audio/right_piano/do2.mp3');
+const audioBlackKeyC2 = new Audio('./audio/right_piano/do2D.mp3'); 
+const audioRe2 = new Audio('./audio/right_piano/re2.mp3');
+const audioBlackKeyD2 = new Audio('./audio/right_piano/re2D.mp3'); 
+const audioMi2 = new Audio('./audio/right_piano/mi2.mp3');
+const audioFa2 = new Audio('./audio/right_piano/fa2.mp3');
+const audioBlackKeyF2 = new Audio('./audio/right_piano/fa2D.mp3'); 
+const audioSol2 = new Audio('./audio/right_piano/sol2.mp3');
+const audioBlackKeyG2 = new Audio('./audio/right_piano/sol2D.mp3'); 
+const audioLya2 = new Audio('./audio/right_piano/lya2.mp3');
+const audioBlackKeyA2 = new Audio('./audio/right_piano/lya2D.mp3'); 
+const audioSi2 = new Audio('./audio/right_piano/si2.mp3');
+const audioDo3 = new Audio('./audio/right_piano/do3.mp3');
 
 const blackKeyC1 = document.createElement('div'); 
 const blackKeyD1 = document.createElement('div'); 
@@ -231,137 +241,199 @@ piano.insertAdjacentElement('beforeend', blackKeyF2);
 piano.insertAdjacentElement('beforeend', blackKeyG2);
 piano.insertAdjacentElement('beforeend', blackKeyA2);
 
-const whiteKeys = [{'KeyA': {key: keyDo1, audio: audioDo1}},
-                    {'KeyS': {key: keyRe1, audio: audioRe1}},
-                    {'KeyD': {key: keyMi1, audio: audioMi1}}, 
-                    {'KeyF': {key: keyFa1, audio: audioFa1}}, 
-                    {'KeyG': {key: keySol1, audio: audioSol1}}, 
-                    {'KeyH': {key: keyLya1, audio: audioLya1}}, 
-                    {'KeyJ': {key: keySi1, audio: audioSi1}}, 
-                    {'KeyK': {key: keyDo2, audio: audioDo2}}, 
-                    {'KeyL': {key: keyRe2, audio: audioRe2}}, 
-                    {'Semicolon': {key: keyMi2, audio: audioMi2}}, 
-                    {'Quote': {key: keyFa2, audio: audioFa2}}, 
-                    {'Backslash': {key: keySol2, audio: audioSol2}}, 
-                    {'Numpad4': {key: keyLya2, audio: audioLya2}}, 
-                    {'Numpad5': {key: keySi2, audio: audioSi2}}, 
-                    {'Numpad6': {key: keyDo3, audio: audioDo3}}
-];
+const whiteKeys = {'KeyA': {keyCode: keyDo1, audio: audioDo1, keyName: 'A'},
+                    'KeyS': {keyCode: keyRe1, audio: audioRe1, keyName: 'S'},
+                    'KeyD': {keyCode: keyMi1, audio: audioMi1, keyName: 'D'}, 
+                    'KeyF': {keyCode: keyFa1, audio: audioFa1, keyName: 'F'}, 
+                    'KeyG': {keyCode: keySol1, audio: audioSol1, keyName: 'G'}, 
+                    'KeyH': {keyCode: keyLya1, audio: audioLya1, keyName: 'H'}, 
+                    'KeyJ': {keyCode: keySi1, audio: audioSi1, keyName: 'J'}, 
+                    'KeyK': {keyCode: keyDo2, audio: audioDo2, keyName: 'K'}, 
+                    'KeyL': {keyCode: keyRe2, audio: audioRe2, keyName: 'L'}, 
+                    'Semicolon': {keyCode: keyMi2, audio: audioMi2, keyName: 'Semicolon'}, 
+                    'Quote': {keyCode: keyFa2, audio: audioFa2, keyName: 'Quote'}, 
+                    'Backslash': {keyCode: keySol2, audio: audioSol2, keyName: 'Backslash'}, 
+                    'Numpad4': {keyCode: keyLya2, audio: audioLya2, keyName: 'Numpad4'}, 
+                    'Numpad5': {keyCode: keySi2, audio: audioSi2, keyName: 'Numpad5'}, 
+                    'Numpad6': {keyCode: keyDo3, audio: audioDo3, keyName: 'Numpad6'}
+};
 
-const blackKeys = [{'KeyW': {key: blackKeyC1, audio: audioBlackKeyC1}}, 
-                    {'KeyE': {key: blackKeyD1, audio: audioBlackKeyD1}}, 
-                    {'KeyT': {key: blackKeyF1, audio: audioBlackKeyF1}}, 
-                    {'KeyY': {key: blackKeyG1, audio: audioBlackKeyG1}}, 
-                    {'KeyU': {key: blackKeyA1, audio: audioBlackKeyA1}}, 
-                    {'KeyO': {key: blackKeyC2, audio: audioBlackKeyC2}}, 
-                    {'KeyP': {key: blackKeyD2, audio: audioBlackKeyD2}}, 
-                    {'BracketRight': {key: blackKeyF2, audio: audioBlackKeyF2}}, 
-                    {'Numpad7': {key: blackKeyG2, audio: audioBlackKeyG2}}, 
-                    {'Numpad8': {key: blackKeyA2, audio: audioBlackKeyA2}}
-];
+const blackKeys = {'KeyW': {keyCode: blackKeyC1, audio: audioBlackKeyC1, keyName: 'W'}, 
+                    'KeyE': {keyCode: blackKeyD1, audio: audioBlackKeyD1, keyName: 'E'}, 
+                    'KeyT': {keyCode: blackKeyF1, audio: audioBlackKeyF1, keyName: 'T'}, 
+                    'KeyY': {keyCode: blackKeyG1, audio: audioBlackKeyG1, keyName: 'Y'}, 
+                    'KeyU': {keyCode: blackKeyA1, audio: audioBlackKeyA1, keyName: 'U'}, 
+                    'KeyO': {keyCode: blackKeyC2, audio: audioBlackKeyC2, keyName: 'O'}, 
+                    'KeyP': {keyCode: blackKeyD2, audio: audioBlackKeyD2, keyName: 'P'}, 
+                    'BracketRight': {keyCode: blackKeyF2, audio: audioBlackKeyF2, keyName: 'BracketRight'}, 
+                    'Numpad7': {keyCode: blackKeyG2, audio: audioBlackKeyG2, keyName: 'Numpad7'}, 
+                    'Numpad8': {keyCode: blackKeyA2, audio: audioBlackKeyA2, keyName: 'Numpad8'}
+};
 
 
 addEventListener('keydown', (event) => {
     forWhite:
     for (let i = 0; i < Object.keys(whiteKeys).length; i++) {
-        if (Object.keys(whiteKeys[i]) == event.code) {
-            whiteKeys[i][event.code].key.style.backgroundColor = `bisque`;
-            whiteKeys[i][event.code].key.style.border = `3px solid black`;
-            whiteKeys[i][event.code].key.style.height = `91%`; 
-            whiteKeys[i][event.code].key.style.width = `6.36%`; 
-            whiteKeys[i][event.code].audio.play(); 
+        if (Object.keys(whiteKeys)[i] == event.code) {
+            whiteKeys[Object.keys(whiteKeys)[i]].keyCode.style.backgroundColor = `bisque`;
+            whiteKeys[Object.keys(whiteKeys)[i]].keyCode.style.border = `3px solid black`;
+            whiteKeys[Object.keys(whiteKeys)[i]].keyCode.style.height = `91%`; 
+            whiteKeys[Object.keys(whiteKeys)[i]].keyCode.style.width = `6.36%`; 
+            whiteKeys[Object.keys(whiteKeys)[i]].audio.play(); 
             break forWhite
         }
     }
     forBlack:
     for (let i = 0; i < Object.keys(blackKeys).length; i++) {
-        if (Object.keys(blackKeys[i]) == event.code) {
-            blackKeys[i][event.code].key.style.borderBottom = `solid 0rem black`;
-            blackKeys[i][event.code].key.style.borderLeft = `solid 0rem black`;
-            blackKeys[i][event.code].key.style.height = `53.5%`; 
-            blackKeys[i][event.code].audio.play(); 
+        if (Object.keys(blackKeys)[i] == event.code) {
+            blackKeys[Object.keys(blackKeys)[i]].keyCode.style.borderBottom = `solid 0rem black`;
+            blackKeys[Object.keys(blackKeys)[i]].keyCode.style.borderLeft = `solid 0rem black`;
+            blackKeys[Object.keys(blackKeys)[i]].keyCode.style.height = `53.5%`; 
+            blackKeys[Object.keys(blackKeys)[i]].audio.play(); 
             break forBlack
         }
     }
 })
 
-addEventListener('mousedown', (event) => {
-    console.log(keyDo1.onmousedown)
-    forWhite:
-    for (let i = 0; i < Object.keys(whiteKeys).length; i++) {
-        if (Object.keys(whiteKeys[i]) == event.code) {
-            whiteKeys[i][event.code].key.style.backgroundColor = `bisque`;
-            whiteKeys[i][event.code].key.style.border = `3px solid black`;
-            whiteKeys[i][event.code].key.style.height = `91%`; 
-            whiteKeys[i][event.code].key.style.width = `6.36%`; 
-            whiteKeys[i][event.code].audio.play(); 
-            break forWhite
-        }
-    }
-    forBlack:
-    for (let i = 0; i < Object.keys(blackKeys).length; i++) {
-        if (Object.keys(blackKeys[i]) == event.code) {
-            blackKeys[i][event.code].key.style.borderBottom = `solid 0rem black`;
-            blackKeys[i][event.code].key.style.borderLeft = `solid 0rem black`;
-            blackKeys[i][event.code].key.style.height = `53.5%`; 
-            blackKeys[i][event.code].audio.play(); 
-            break forBlack
-        }
-    }
-});
+// addEventListener('mousedown', (event) => {
+//     forWhite:
+//     for (let i = 0; i < Object.keys(whiteKeys).length; i++) {
+//         if (Object.keys(whiteKeys[i]) == event.code) {
+//             whiteKeys[i][event.code].keyCode.style.backgroundColor = `bisque`;
+//             whiteKeys[i][event.code].keyCode.style.border = `3px solid black`;
+//             whiteKeys[i][event.code].keyCode.style.height = `91%`; 
+//             whiteKeys[i][event.code].keyCode.style.width = `6.36%`; 
+//             whiteKeys[i][event.code].audio.play(); 
+//             break forWhite
+//         }
+//     }
+//     forBlack:
+//     for (let i = 0; i < Object.keys(blackKeys).length; i++) {
+//         if (Object.keys(blackKeys[i]) == event.code) {
+//             blackKeys[i][event.code].keyCode.style.borderBottom = `solid 0rem black`;
+//             blackKeys[i][event.code].keyCode.style.borderLeft = `solid 0rem black`;
+//             blackKeys[i][event.code].keyCode.style.height = `53.5%`; 
+//             blackKeys[i][event.code].audio.play(); 
+//             break forBlack
+//         }
+//     }
+// });
 
 addEventListener('keyup', (event) => {
 
     forWhite:
     for (let i = 0; i < Object.keys(whiteKeys).length; i++) {
-        if (Object.keys(whiteKeys[i]) == event.code) {
-            whiteKeys[i][event.code].key.style.backgroundColor = `white`;
-            whiteKeys[i][event.code].key.style.border = `1px solid black`;
-            whiteKeys[i][event.code].key.style.height = `90%`; 
-            whiteKeys[i][event.code].key.style.width = `6.66%`; 
-            whiteKeys[i][event.code].audio.load(); 
+        if (Object.keys(whiteKeys)[i] == event.code) {
+            whiteKeys[Object.keys(whiteKeys)[i]].keyCode.style.backgroundColor = `white`;
+            whiteKeys[Object.keys(whiteKeys)[i]].keyCode.style.border = `1px solid black`;
+            whiteKeys[Object.keys(whiteKeys)[i]].keyCode.style.height = `90%`; 
+            whiteKeys[Object.keys(whiteKeys)[i]].keyCode.style.width = `6.66%`; 
+            whiteKeys[Object.keys(whiteKeys)[i]].audio.load(); 
             break forWhite
         }
     }
     forBlack:
     for (let i = 0; i < Object.keys(blackKeys).length; i++) {
-        if (Object.keys(blackKeys[i]) == event.code) {
-            blackKeys[i][event.code].key.style.borderBottom = `solid 0.8rem black`;
-            blackKeys[i][event.code].key.style.borderLeft = `solid 0.3rem black`;
-            blackKeys[i][event.code].key.style.height = `50%`; 
-            blackKeys[i][event.code].audio.load(); 
+        if (Object.keys(blackKeys)[i] == event.code) {
+            blackKeys[Object.keys(blackKeys)[i]].keyCode.style.borderBottom = `solid 0.8rem black`;
+            blackKeys[Object.keys(blackKeys)[i]].keyCode.style.borderLeft = `solid 0.3rem black`;
+            blackKeys[Object.keys(blackKeys)[i]].keyCode.style.height = `50%`; 
+            blackKeys[Object.keys(blackKeys)[i]].audio.load(); 
             break forBlack
         }
     }
 })
 
-addEventListener('mouseup', (event) => {
+// addEventListener('mouseup', (event) => {
 
-    forWhite:
-    for (let i = 0; i < Object.keys(whiteKeys).length; i++) {
-        if (Object.keys(whiteKeys[i]) == event.code) {
-            whiteKeys[i][event.code].key.style.backgroundColor = `white`;
-            whiteKeys[i][event.code].key.style.border = `1px solid black`;
-            whiteKeys[i][event.code].key.style.height = `90%`; 
-            whiteKeys[i][event.code].key.style.width = `6.66%`; 
-            whiteKeys[i][event.code].audio.load(); 
-            break forWhite
-        }
-    }
-    forBlack:
-    for (let i = 0; i < Object.keys(blackKeys).length; i++) {
-        if (Object.keys(blackKeys[i]) == event.code) {
-            blackKeys[i][event.code].key.style.borderBottom = `solid 0.8rem black`;
-            blackKeys[i][event.code].key.style.borderLeft = `solid 0.3rem black`;
-            blackKeys[i][event.code].key.style.height = `50%`; 
-            blackKeys[i][event.code].audio.load(); 
-            break forBlack
-        }
-    }
-})
+//     forWhite:
+//     for (let i = 0; i < Object.keys(whiteKeys).length; i++) {
+//         if (Object.keys(whiteKeys[i]) == event.code) {
+//             whiteKeys[i][event.code].keyCode.style.backgroundColor = `white`;
+//             whiteKeys[i][event.code].keyCode.style.border = `1px solid black`;
+//             whiteKeys[i][event.code].keyCode.style.height = `90%`; 
+//             whiteKeys[i][event.code].keyCode.style.width = `6.66%`; 
+//             whiteKeys[i][event.code].audio.load(); 
+//             break forWhite
+//         }
+//     }
+//     forBlack:
+//     for (let i = 0; i < Object.keys(blackKeys).length; i++) {
+//         if (Object.keys(blackKeys[i]) == event.code) {
+//             blackKeys[i][event.code].keyCode.style.borderBottom = `solid 0.8rem black`;
+//             blackKeys[i][event.code].keyCode.style.borderLeft = `solid 0.3rem black`;
+//             blackKeys[i][event.code].keyCode.style.height = `50%`; 
+//             blackKeys[i][event.code].audio.load(); 
+//             break forBlack
+//         }
+//     }
+// })
 
-song1.onclick = () => {title.style.display = 'none'; songNames.style.display = 'none'; song1Text.style.display = 'flex';butt.style.display = 'flex'};
-buttBack.onclick = () => {title.style.display = 'block'; songNames.style.display = 'block';song1Text.style.display = 'none';butt.style.display = 'none'}
+song1.onclick = () => {
+    title.style.display = 'none'; 
+    songNames.style.display = 'none'; 
+    song1Text.style.display = 'flex';
+    butt.style.display = 'flex'
+};
+song2.onclick = () => {
+    title.style.display = 'none'; 
+    songNames.style.display = 'none'; 
+    song2Text.style.display = 'flex';
+    butt.style.display = 'flex'
+};
+buttBack.onclick = () => {
+    title.style.display = 'block'; 
+    songNames.style.display = 'block';
+    song1Text.style.display = 'none'; 
+    song2Text.style.display = 'none'; 
+    butt.style.display = 'none'
+};
+buttPlay.onclick = () => {
+    if (song1Text.style.display == 'flex') {
+        playSong(song1TextContent)
+    }
+    if (song2Text.style.display == 'flex') {
+        playSong(song2TextContent)
+    }
+}
+
+function playSong(song) {
+    let acc = song.split(' ');
+    console.log(acc);
+    let time1 = 0;
+    let time2 = 700;
+
+    acc.forEach(item => {
+        console.log(Object.keys(whiteKeys).length)
+        
+        for (let i = 0; i < Object.keys(whiteKeys).length; i++) {
+            console.log(item == whiteKeys[Object.keys(whiteKeys)[1]].keyName)
+            if (item == whiteKeys[Object.keys(whiteKeys)[i]].keyName) {
+                setTimeout(() => {
+                    whiteKeys[Object.keys(whiteKeys)[i]].keyCode.style.backgroundColor = `bisque`;
+                    whiteKeys[Object.keys(whiteKeys)[i]].keyCode.style.border = `3px solid black`;
+                    whiteKeys[Object.keys(whiteKeys)[i]].keyCode.style.height = `91%`; 
+                    whiteKeys[Object.keys(whiteKeys)[i]].keyCode.style.width = `6.36%`; 
+                    whiteKeys[Object.keys(whiteKeys)[i]].audio.play();
+    
+                    setTimeout(() => {
+                        whiteKeys[Object.keys(whiteKeys)[i]].keyCode.style.backgroundColor = `white`;
+                        whiteKeys[Object.keys(whiteKeys)[i]].keyCode.style.border = `ipx solid black`;
+                        whiteKeys[Object.keys(whiteKeys)[i]].keyCode.style.height = `90%`; 
+                        whiteKeys[Object.keys(whiteKeys)[i]].keyCode.style.width = `6.66%`; 
+                        whiteKeys[Object.keys(whiteKeys)[i]].audio.load();
+                    }, `${time2}`)
+                }, `${time1}`);
+                time1 += 800; 
+            }
+        }
+    })
+}
+
+
+
+
+// playSong(song2TextContent);
     // switch (event.code) {
     //     case 'KeyA': {
     //         keyDo1.style.backgroundColor = `red`;
