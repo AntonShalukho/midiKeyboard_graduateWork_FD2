@@ -94,15 +94,9 @@ body.append(bodyShadow);
 body.append(note);
 note.append(title);
 note.append(songNames);
-songNames.append(song1);
-songNames.append(song2);
-songNames.append(song3);
-note.append(song1Text);
-note.append(song2Text);
-note.append(song3Text);
-note.append(butt);
-butt.append(buttBack);
-butt.append(buttPlay);
+songNames.append(song1, song2, song3);
+note.append(song1Text, song2Text, song3Text, butt);
+butt.append(buttBack, buttPlay);
 
 /* 
             Клавиши пианино  
@@ -202,21 +196,21 @@ Object.values(whiteKeys).filter(el => {
     accKey += 90;
 });
 
-keyDo1.innerHTML = `<strong>A</strong> (До)`;
-keyRe1.innerHTML = `<strong>S</strong> (Ре)`;
-keyMi1.innerHTML = `<strong>D</strong> (Ми)`;
-keyFa1.innerHTML = `<strong>F</strong> (Фа)`;
-keySol1.innerHTML = `<strong>G</strong> (Соль)`;
-keyLya1.innerHTML = `<strong>H</strong> (Ля)`;
-keySi1.innerHTML = `<strong>J</strong> (Си)`;
-keyDo2.innerHTML = `<strong>K</strong> (До)`;
-keyRe2.innerHTML = `<strong>L</strong> (Ре)`;
-keyMi2.innerHTML = `<strong>:</strong> (Ми)`;
-keyFa2.innerHTML = `<strong>"</strong> (Фа)`;
-keySol2.innerHTML = `<strong>|</strong> (Соль)`;
-keyLya2.innerHTML = `<strong>4</strong> (Ля)`;
-keySi2.innerHTML = `<strong>5</strong> (Си)`;
-keyDo3.innerHTML = `<strong>6</strong> (До)`;
+keyDo1.append(`A (До)`);
+keyRe1.append(`S (Ре)`);
+keyMi1.append(`D (Ми)`);
+keyFa1.append(`F (Фа)`);
+keySol1.append(`G (Соль)`);
+keyLya1.append(`H (Ля)`);
+keySi1.append(`J (Си)`);
+keyDo2.append(`K (До)`);
+keyRe2.append(`L (Ре)`);
+keyMi2.append(`: (Ми)`);
+keyFa2.append(`" (Фа)`);
+keySol2.append(`| (Соль)`);
+keyLya2.append(`4 (Ля)`);
+keySi2.append(`5 (Си)`);
+keyDo3.append(`6 (До)`);
 
 blackKeyC1.style.cssText = `${blackKey} left: 4%;`; 
 blackKeyD1.style.cssText = `${blackKey} left: 10.8%;`; 
@@ -229,16 +223,16 @@ blackKeyF2.style.cssText = `${blackKey} left: 71%;`;
 blackKeyG2.style.cssText = `${blackKey} left: 77.7%;`; 
 blackKeyA2.style.cssText = `${blackKey} left: 84.4%;`; 
 
-blackKeyC1.innerHTML = `<strong>W</strong>(До#)`; 
-blackKeyD1.innerHTML = `<strong>E</strong>(Ре#)`;
-blackKeyF1.innerHTML = `<strong>T</strong>(Фа#)`;
-blackKeyG1.innerHTML = `<strong>Y</strong>(Соль#)`; 
-blackKeyA1.innerHTML = `<strong>U</strong>(Ля#)`; 
-blackKeyC2.innerHTML = `<strong>O</strong>(До#)`; 
-blackKeyD2.innerHTML = `<strong>P</strong>(Ре#)`; 
-blackKeyF2.innerHTML = `<strong>}</strong>(Фа#)`; 
-blackKeyG2.innerHTML = `<strong>7</strong>(Соль#)`; 
-blackKeyA2.innerHTML = `<strong>8</strong>(Ля#)`;
+blackKeyC1.append(`W (До#)`); 
+blackKeyD1.append(`E (Ре#)`);
+blackKeyF1.append(`T (Фа#)`);
+blackKeyG1.append(`Y (Соль#)`); 
+blackKeyA1.append(`U (Ля#)`); 
+blackKeyC2.append(`O (До#)`); 
+blackKeyD2.append(`P (Ре#)`); 
+blackKeyF2.append(`} (Фа#)`); 
+blackKeyG2.append(`7 (Соль#)`); 
+blackKeyA2.append(`8 (Ля#)`);
 
 body.append(piano);
 Object.values(whiteKeys).filter(el => piano.append(el.keyCode))
