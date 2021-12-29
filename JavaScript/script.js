@@ -1,10 +1,12 @@
+import { root2 } from './registration.js';
+
 //    -------------   First title page    -----------------
  
 /* 
     Site
 */
 
-const root = document.getElementById('root');
+const root = document.getElementById('root1');
 
 /*
     Clock
@@ -52,15 +54,19 @@ buttonEnter.onmouseup = () => {buttonEnter.style.cssText += `box-shadow: 0px 10p
 buttonEnter.onmouseover = () => {buttonEnter.style.cssText += `box-shadow: 0px 10px 13px #795548bf; top: -5px;`};
 buttonEnter.onmouseleave = () => {buttonEnter.style.cssText += `box-shadow: none; top: 0px;`};
 
-const buttonRegistration = document.createElement('div');
-buttonRegistration.classList.add('button', 'buttonRegistration');
-buttonRegistration.append('Log in')
-buttonRegistration.onmousedown = () => {buttonRegistration.style.cssText += `box-shadow: 0px 5px 8px #795548bf; top: 0px;`};
-buttonRegistration.onmouseup = () => {buttonRegistration.style.cssText += `box-shadow: 0px 10px 13px #795548bf; top: -5px;`};
-buttonRegistration.onmouseover = () => {buttonRegistration.style.cssText += `box-shadow: 0px 10px 13px #795548bf; top: -5px;`};
-buttonRegistration.onmouseleave = () => {buttonRegistration.style.cssText += `box-shadow: none; top: 0px;`};
+const buttonLogIn = document.createElement('div');
+buttonLogIn.classList.add('button', 'buttonLogIn');
+buttonLogIn.append('Log in')
+buttonLogIn.onmousedown = () => {buttonLogIn.style.cssText += `box-shadow: 0px 5px 8px #795548bf; top: 0px;`};
+buttonLogIn.onmouseup = () => {
+    buttonLogIn.style.cssText += `box-shadow: 0px 10px 13px #795548bf; top: -5px;`;
+    pictureFirstShadow.style.zIndex = '10';
+    root2.style.display = 'block'
+};
+buttonLogIn.onmouseover = () => {buttonLogIn.style.cssText += `box-shadow: 0px 10px 13px #795548bf; top: -5px;`};
+buttonLogIn.onmouseleave = () => {buttonLogIn.style.cssText += `box-shadow: none; top: 0px;`};
 
-buttonWrapper.append(buttonEnter, buttonRegistration)
+buttonWrapper.append(buttonEnter, buttonLogIn)
 pictureFirstContent3.append(buttonWrapper)
 pictureFirst.append(pictureFirstContent3);
 
@@ -98,16 +104,24 @@ function giveTime() {
     const time = new Date();
     let hour = time.getHours();
     let min = time.getMinutes();
+    let sec = time.getSeconds();
 
     if (hour < 10) {
         hour = '0' + hour;
     };
+
     if (min < 10) {
         min = '0' + min;
+    };
+
+    if (sec < 10) {
+        sec = '0' + sec
     }
 
-    clock.textContent = `${hour} : ${min}`;
+    clock.textContent = `${hour} : ${min} : ${sec}`;
     
 }
 giveTime()
 setInterval(giveTime, 1000)
+
+export { pictureFirstShadow }
