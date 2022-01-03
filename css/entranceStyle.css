@@ -1,27 +1,14 @@
-body {
-    margin: auto;
-    background-color: black;
-}
-
 .root3 {
     display: none;
     position: fixed;
-    top: 165px;
-    left: 710px;
+    top: 305px;
+    left: 720px;
     z-index: 11;
 }
 
 .entranceWrapper {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
-    border: 1px solid black;
     width: 376px;
     height: 288px;
-    position: relative;
-    background-color: rgb(207, 207, 207);
-    border-radius: 10px;
 }
 
 .entranceForm {
@@ -30,16 +17,13 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    row-gap: 20px;
+    row-gap: 15px;
     width: 100%;
 }
 
-.formFactor {
-    width: 70%;
-    height: 30px;
-    border-radius: 10px;
-    border: 1px solid #ff9800;
-    outline: none;
+.eye3 {
+    top: 111px;
+    left: 290px;
 }
 
 .backEntranceMark {
@@ -52,15 +36,17 @@ body {
 
 .entranceButtons {
     display: flex;
-    flex-direction: row;
-    column-gap: 20px;
+    justify-content: center;
+    align-items: center;
+    /* flex-direction: row;
+    column-gap: 20px; */
+    width: 70%;
 }
 
-.Butt {
+.butt {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 30px;
     border-radius: 10px;
     width: 60%;
     height: 45px;
@@ -72,10 +58,19 @@ body {
     transition-duration: .1s;
 }
 
-.Butt:hover {
+.butt:hover {
     box-shadow: 4px 14px 17px #795548bf;
 }
 
-.Butt:active {
+.butt:active {
     box-shadow: 4px 8px 11px #795548bf;
+}
+
+.errorEntranceText {
+    color: rgb(207, 207, 207);
+}
+
+.errorActive {
+    color: red;
+    cursor: context-menu;
 }

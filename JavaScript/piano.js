@@ -1,35 +1,23 @@
+// Body
 const body = document.getElementById('body');
-
-body.style.cssText = `
-    margin: auto;
-    background: url(./png/png5.jpg);
-    position: relative;
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    row-gap: 70px;
-`;
-
 const bodyShadow = document.createElement('div');
+bodyShadow.classList.add('bodyShadow');
 
-bodyShadow.style.cssText = `
-    background-color: rgb(0 0 0 / 68%);
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    width: 100%;
-    height: 100%;
-`;
 
 /*
-        Template with music notes
+-----------------------  Template with music notes  -----------------------------------
 */
 
+// Note desk
 const note = document.createElement('div');
+note.classList.add('note');
+
+// Title
 const title = document.createElement('div');
+title.classList.add('title');
+title.append(`Просто выбери что понравилось или сочини сам:`);
+
+// ------- Songs ------
 const songNames = document.createElement('div');
 const song1 = document.createElement('div');
 const song2 = document.createElement('div');
@@ -37,12 +25,35 @@ const song3 = document.createElement('div');
 const song1Text = document.createElement('div');
 const song2Text = document.createElement('div');
 const song3Text = document.createElement('div');
+song1.append(`In the end(Linkin park),`);
+song2.append(`Ёлочка,`);
+song3.append(`Песенка Мамонтёнка`);
+song1Text.append(`S..HH..F..DDD..DF / 3 раза`);
+song2Text.append(`G..DD..G..DD..GFDSA....H..KH..G..DD..GFDSA...H..KH..G..DD..GFDSA`);
+song3Text.append(`D..GGGG..H..D..GGGGG...A..HHHH.K..J.HGGGG...A..KJKJ.H..J.HG..G.J..SDF..HG`);
+
+songNames.append(song1, song2, song3);
+
+// Navigation buttons 
 const butt = document.createElement('div');
+butt.classList.add('butt');
+
 const buttBack = document.createElement('div');
+buttBack.classList.add('buttBack');
+buttBack.append(`Back`);
+
 const buttPlay = document.createElement('div');
-const song1TextContent = `S  H H  F  D D D  D F / 3 раза`;
+buttPlay.classList.add('buttPlay');
+buttPlay.append(`Play`);
+
+butt.append(buttBack, buttPlay);
+
+// Song's texts for function
+const song1TextContent = `S  H H  F  D D D  D F`;
 const song2TextContent = `G  D D  G  D D  G F D S A    H  K H  G  D D  G F D S A    H  K H  G  D D  G F D S A`;
 const song3TextContent = `D  G G G G  H  D  G G G G G  A  H H H H  K J  H G G G G  A  K J K J H J  H G  G J  S D F H G`;
+
+// Object of songs
 const songObject = {
     'song1': {
         song: song1,
@@ -61,48 +72,24 @@ const songObject = {
     }
 };
 
-note.style.cssText = `
-    width: 70%;
-    height: 40%;
-    background-color: white;
-    z-index: 2;
-    display: flex;
-    flex-direction: column;
-`;
+Object.values(songObject).filter(el => {
+    el.song.classList.add('song');
+    el.text.classList.add('text');
+});
 
-Object.values(songObject).filter(el => {el.song.style.cssText = `font-size: 20px; cursor: pointer; 
-                                                                padding-left: 10px; padding-bottom: 5px;`});
-Object.values(songObject).filter(el => {el.text.style.cssText = `font-size: 24px; display: none; 
-                                                                justify-self: center; align-self: center;padding: 10px;`});
-title.style.cssText = `font-size: 24px; padding: 20px`;
-butt.style.cssText = `display: none; flex-direction: row; justify-content: end; align-items: end;`;
-buttBack.style.cssText = `width: 8%; height: 50%; border: 1px solid black; display: flex; justify-content: center; align-items: center; 
-                        cursor: pointer; margin: 1%; justify-self: end; align-self: end;`;
-buttPlay.style.cssText = `width: 8%; height: 50%; border: 1px solid black; display: flex; justify-content: center; align-items: center; 
-                        cursor: pointer; margin: 1%; justify-self: end; align-self: end;`;
-title.textContent = `Просто выбери что понравилось или сочини сам:`;
-song1.textContent = `In the end(Linkin park),`;
-song2.textContent = `Ёлочка,`;
-song3.textContent = `Песенка Мамонтёнка`;
-song1Text.textContent = `S..HH..F..DDD..DF / 3 раза`;
-song2Text.textContent = `G..DD..G..DD..GFDSA....H..KH..G..DD..GFDSA...H..KH..G..DD..GFDSA`;
-song3Text.textContent = `D..GGGG..H..D..GGGGG...A..HHHH.K..J.HGGGG...A..KJKJ.H..J.HG..G.J..SDF..HG`;
-buttBack.textContent = `Back`;
-buttPlay.textContent = `Play`;
-
-body.append(bodyShadow);
-body.append(note);
-note.append(title);
-note.append(songNames);
-songNames.append(song1, song2, song3);
-note.append(song1Text, song2Text, song3Text, butt);
-butt.append(buttBack, buttPlay);
+// Luggage
+note.append(title, songNames, song1Text, song2Text, song3Text, butt);
+body.append(bodyShadow, note);
 
 /* 
-            Клавиши пианино  
+-----------------------------  Piano's keys  ----------------------
 */
 
+// Create piano
 const piano = document.createElement('div');
+piano.classList.add('piano');
+
+// Create white's keys
 const keyDo1 = document.createElement('div');
 const keyRe1 = document.createElement('div');
 const keyMi1 = document.createElement('div');
@@ -118,6 +105,8 @@ const keySol2 = document.createElement('div');
 const keyLya2 = document.createElement('div');
 const keySi2 = document.createElement('div');
 const keyDo3 = document.createElement('div');
+
+// Create black's keys
 const blackKeyC1 = document.createElement('div'); 
 const blackKeyD1 = document.createElement('div'); 
 const blackKeyF1 = document.createElement('div'); 
@@ -128,6 +117,8 @@ const blackKeyD2 = document.createElement('div');
 const blackKeyF2 = document.createElement('div'); 
 const blackKeyG2 = document.createElement('div'); 
 const blackKeyA2 = document.createElement('div'); 
+
+// Create audio
 const audioDo1 = new Audio('./audio/right_piano/do1.mp3');
 const audioBlackKeyC1 = new Audio('./audio/right_piano/do1D.mp3'); 
 const audioRe1 = new Audio('./audio/right_piano/re1.mp3');
@@ -153,13 +144,8 @@ const audioLya2 = new Audio('./audio/right_piano/lya2.mp3');
 const audioBlackKeyA2 = new Audio('./audio/right_piano/lya2D.mp3'); 
 const audioSi2 = new Audio('./audio/right_piano/si2.mp3');
 const audioDo3 = new Audio('./audio/right_piano/do3.mp3');
-const blackKey = `background-color: black; color: white; border-bottom: solid 0.8rem black; border-left: solid 0.3rem black;
-                border-right: solid 0rem black; position: absolute; width: 4%; height: 50%; top: 0; display: flex;
-                justify-content: center; align-items: end; transition-duration: 0.05s; font-size: 10px;`;
-const key = `width: 90px; height: 90%; border-radius: 5%; border: 1px solid black; display: flex; justify-content: center;
-                align-items: end; background-color: white; position: absolute; top: 0px`;
 
-
+// White and black keys's object
 const whiteKeys = {'KeyA': {keyCode: keyDo1, audio: audioDo1, keyName: 'A'},
                 'KeyS': {keyCode: keyRe1, audio: audioRe1, keyName: 'S'},
                 'KeyD': {keyCode: keyMi1, audio: audioMi1, keyName: 'D'}, 
@@ -189,54 +175,37 @@ const blackKeys = {'KeyW': {keyCode: blackKeyC1, audio: audioBlackKeyC1, keyName
                 'Numpad8': {keyCode: blackKeyA2, audio: audioBlackKeyA2, keyName: 'Numpad8'}
 };
 
-piano.style.cssText = `width: 1350px; height: 45%; z-index: 2; display: flex; flex-direction: row; position: relative;`;
-let accKey = 0;
-Object.values(whiteKeys).filter(el => {
-    el.keyCode.style.cssText = `${key}; left: ${accKey}px`;
-    accKey += 90;
-});
+// Function for keys's building 
+function getWhiteAndBlackStyle() {
+    const arr = [4, 10.8, 24.1, 30.8, 37.5, 50.9, 57.6, 71, 77.7, 84.4];
+    const whiteText = [`A (До)`, `S (Ре)`, `D (Ми)`, `F (Фа)`, `G (Соль)`, `H (Ля)`, `J (Си)`, `K (До)`, `L (Ре)`, `: (Ми)`, `" (Фа)`, `| (Соль)`, `4 (Ля)`, `5 (Си)`, `6 (До)`];
+    const blackText = [`W (До#)`, `E (Ре#)`, `T (Фа#)`, `Y (Соль#)`, `U (Ля#)`, `O (До#)`, `P (Ре#)`, `} (Фа#)`, `7 (Соль#)`, `8 (Ля#)`];
+    let accKey = 0;
+    let acc = 0;
 
-keyDo1.append(`A (До)`);
-keyRe1.append(`S (Ре)`);
-keyMi1.append(`D (Ми)`);
-keyFa1.append(`F (Фа)`);
-keySol1.append(`G (Соль)`);
-keyLya1.append(`H (Ля)`);
-keySi1.append(`J (Си)`);
-keyDo2.append(`K (До)`);
-keyRe2.append(`L (Ре)`);
-keyMi2.append(`: (Ми)`);
-keyFa2.append(`" (Фа)`);
-keySol2.append(`| (Соль)`);
-keyLya2.append(`4 (Ля)`);
-keySi2.append(`5 (Си)`);
-keyDo3.append(`6 (До)`);
+    for (let el in whiteKeys) {
+        whiteKeys[el].keyCode.classList.add('key');
+        whiteKeys[el].keyCode.style.left = `${accKey}px`;
+        whiteKeys[el].keyCode.append(whiteText[acc]);
+        accKey += 90;
+        acc++
+    }
 
-blackKeyC1.style.cssText = `${blackKey} left: 4%;`; 
-blackKeyD1.style.cssText = `${blackKey} left: 10.8%;`; 
-blackKeyF1.style.cssText = `${blackKey} left: 24.1%;`; 
-blackKeyG1.style.cssText = `${blackKey} left: 30.8%;`; 
-blackKeyA1.style.cssText = `${blackKey} left: 37.5%;`; 
-blackKeyC2.style.cssText = `${blackKey} left: 50.9%;`; 
-blackKeyD2.style.cssText = `${blackKey} left: 57.6%;`; 
-blackKeyF2.style.cssText = `${blackKey} left: 71%;`; 
-blackKeyG2.style.cssText = `${blackKey} left: 77.7%;`; 
-blackKeyA2.style.cssText = `${blackKey} left: 84.4%;`; 
+    acc = 0;
 
-blackKeyC1.append(`W (До#)`); 
-blackKeyD1.append(`E (Ре#)`);
-blackKeyF1.append(`T (Фа#)`);
-blackKeyG1.append(`Y (Соль#)`); 
-blackKeyA1.append(`U (Ля#)`); 
-blackKeyC2.append(`O (До#)`); 
-blackKeyD2.append(`P (Ре#)`); 
-blackKeyF2.append(`} (Фа#)`); 
-blackKeyG2.append(`7 (Соль#)`); 
-blackKeyA2.append(`8 (Ля#)`);
+    for (let el in blackKeys) {
+        blackKeys[el].keyCode.classList.add('blackKey');
+        blackKeys[el].keyCode.style.left = `${arr[acc]}%`;
+        blackKeys[el].keyCode.append(blackText[acc]);
+        acc++;
+    }
+}
+getWhiteAndBlackStyle()
 
-body.append(piano);
+// Luggage
 Object.values(whiteKeys).filter(el => piano.append(el.keyCode))
 Object.values(blackKeys).filter(el => piano.append(el.keyCode))
+body.append(piano);
 
 
 addEventListener('keydown', (event) => {
@@ -373,9 +342,8 @@ addEventListener('click', (event) => {
 
 
 function playSong(song) {
-    let acc = song.split(' ');
+    const acc = song.split(' ');
     let time1 = 0;
-    let time2 = 500;
 
     acc.forEach(item => {
         
@@ -394,7 +362,7 @@ function playSong(song) {
                         whiteKeys[i].keyCode.style.height = `90%`; 
                         whiteKeys[i].keyCode.style.width = `6.66%`; 
                         whiteKeys[i].audio.load();
-                    }, `${time2}`)
+                    }, 500)
                 }, `${time1}`);
                 time1 += 600; 
             }

@@ -1,4 +1,5 @@
 import { checkForm } from "./functions.js";
+import { willVisible } from "./functions.js";
 import { pictureFirstShadow } from './script.js';
 
 const root2 = document.getElementById('root2');
@@ -10,7 +11,7 @@ const entranceForm = document.createElement('div');
 
 // Wrapper
 const entranceWrapper = document.createElement('form');
-entranceWrapper.classList.add('entranceWrapper');
+entranceWrapper.classList.add('entranceWrapperReg');
 entranceWrapper.setAttribute('onsubmit', 'return false');
 // entranceWrapper.setAttribute('method', 'post');
 // entranceWrapper.onsubmit = () => checkForm(entranceWrapper);
@@ -25,45 +26,6 @@ backMark.onclick = () => {
     root2.style.display = 'none';
 }
 
-/*
-    Check and cross marks
-*/
-
-// // Check and cross mark1
-// const check1 = document.createElement('img');
-// check1.setAttribute('src', '../png/check.png');
-// check1.classList.add('check');
-// check1.classList.add('check1');
-
-// const cross1 = document.createElement('img');
-// cross1.setAttribute('src', '../png/cross.png');
-// cross1.classList.add('cross');
-// cross1.classList.add('cross1');
-
-// // Check and cross mark2
-// const check2 = document.createElement('img');
-// check2.setAttribute('src', '../png/check.png');
-// check2.classList.add('check');
-// check2.classList.add('check2');
-
-// const cross2 = document.createElement('img');
-// cross2.setAttribute('src', '../png/cross.png');
-// cross2.classList.add('cross');
-// cross2.classList.add('cross2');
-
-// // Check and cross mark3
-// const check3 = document.createElement('img');
-// check3.setAttribute('src', '../png/check.png');
-// check3.classList.add('check');
-// check3.classList.add('check3');
-
-// const cross3 = document.createElement('img');
-// cross3.setAttribute('src', '../png/cross.png');
-// cross3.classList.add('cross');
-// cross3.classList.add('cross3');
-//---------------------------------------------------
-
-
 // Password eye
 const eye1 = document.createElement('img');
 eye1.setAttribute('src', '../png/eye-disible.svg');
@@ -74,17 +36,7 @@ const eye2 = document.createElement('img');
 eye2.setAttribute('src', '../png/eye-disible.svg');
 eye2.classList.add('eye2');
 
-// Function: visible password
 
-function willVisible(a, b) {
-    if (a.src == 'http://127.0.0.1:5500/png/eye-disible.svg') {
-        a.setAttribute('src', 'http://127.0.0.1:5500/png/eye-visible.svg')
-    } else {a.setAttribute('src', 'http://127.0.0.1:5500/png/eye-disible.svg')}
-
-    if (b.type == 'password') {
-        b.setAttribute('type', 'text')
-    } else {b.setAttribute('type', 'password')}
-}
 
 eye1.onclick = () => willVisible(eye1, passwordInput);
 eye2.onclick = () => willVisible(eye2, repeatPasswordInput);
@@ -123,13 +75,6 @@ surnameInput.setAttribute('pattern', '[A-Za-zА-Яа-яЁё-]{1,}');
 surnameInput.setAttribute('title', 'The name have be Latin or Cyrillic letters');
 surnameInput.classList.add('formFactor');
 entranceName.append(surnameInput);
-
-// Invalid Surname
-// const invalidFormText2 = document.createElement('div');
-// invalidFormText2.classList.add('invalidFormText');
-// invalidFormText2.classList.add('invalidFormText2');
-// invalidFormText2.append('The name have be Latin or Cyrillic letters');
-// entranceName.append(invalidFormText2);
 
 // Email
 const emailInput = document.createElement('input');
@@ -189,7 +134,7 @@ entranceName.append(invalidFormText2);
 const buttonRegistration = document.createElement('button');
 buttonRegistration.setAttribute('type', 'submit');
 buttonRegistration.setAttribute('id', 'button');
-buttonRegistration.classList.add('buttonRegistration');
+buttonRegistration.classList.add('butt', 'buttonRegistration');
 buttonRegistration.append('Log in');
 buttonRegistration.onclick = () => checkForm(entranceWrapper);
 

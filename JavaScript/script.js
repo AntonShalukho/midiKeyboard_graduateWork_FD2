@@ -1,4 +1,5 @@
 import { root2 } from './registration.js';
+import { root3 } from './entrance.js';
 
 //    -------------   First title page    -----------------
  
@@ -50,7 +51,11 @@ const buttonEnter = document.createElement('div');
 buttonEnter.classList.add('button', 'buttonEnter');
 buttonEnter.append('Entrance')
 buttonEnter.onmousedown = () => {buttonEnter.style.cssText += `box-shadow: 0px 5px 8px #795548bf; top: 0px;`};
-buttonEnter.onmouseup = () => {buttonEnter.style.cssText += `box-shadow: 0px 10px 13px #795548bf; top: -5px;`};
+buttonEnter.onmouseup = () => {
+    buttonEnter.style.cssText += `box-shadow: 0px 10px 13px #795548bf; top: -5px;`;
+    pictureFirstShadow.style.zIndex = '10';
+    root3.style.display = 'block';
+};
 buttonEnter.onmouseover = () => {buttonEnter.style.cssText += `box-shadow: 0px 10px 13px #795548bf; top: -5px;`};
 buttonEnter.onmouseleave = () => {buttonEnter.style.cssText += `box-shadow: none; top: 0px;`};
 
@@ -61,7 +66,7 @@ buttonLogIn.onmousedown = () => {buttonLogIn.style.cssText += `box-shadow: 0px 5
 buttonLogIn.onmouseup = () => {
     buttonLogIn.style.cssText += `box-shadow: 0px 10px 13px #795548bf; top: -5px;`;
     pictureFirstShadow.style.zIndex = '10';
-    root2.style.display = 'block'
+    root2.style.display = 'block';
 };
 buttonLogIn.onmouseover = () => {buttonLogIn.style.cssText += `box-shadow: 0px 10px 13px #795548bf; top: -5px;`};
 buttonLogIn.onmouseleave = () => {buttonLogIn.style.cssText += `box-shadow: none; top: 0px;`};

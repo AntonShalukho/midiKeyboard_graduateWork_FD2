@@ -5,6 +5,21 @@ import { repeatPasswordInput } from './registration.js';
 import { passwordInput } from './registration.js';
 import { nameInput } from './registration.js';
 import { surnameInput } from './registration.js';
+import { emailEntranceInput } from './entrance.js';
+import { passwordEntranceInput } from './entrance.js';
+import { errorEntranceText } from './entrance.js';
+
+//-------------------------- Function: visible password  ---------------------------
+
+function willVisible(a, b) {
+    if (a.src == 'http://127.0.0.1:5500/png/eye-disible.svg') {
+        a.setAttribute('src', 'http://127.0.0.1:5500/png/eye-visible.svg')
+    } else {a.setAttribute('src', 'http://127.0.0.1:5500/png/eye-disible.svg')}
+
+    if (b.type == 'password') {
+        b.setAttribute('type', 'text')
+    } else {b.setAttribute('type', 'password')}
+}
 
 //-----------------------  Check form  -----------------------
 
@@ -24,7 +39,7 @@ function getValid(form) {
             const arr = JSON.parse(localStorage.getItem('users'));
             let acc = true;
 
-            if (arr != null || arr.length != 0) {
+            if (arr != null || arr) {
                 endFor:
                 for (let i of arr) {
                     if (i.user.email == emailInput.value) {
@@ -106,9 +121,8 @@ function getValidEmail(email) {
 
     if (email.value != '') {
         if (r.test(email.value)) {
-            console.log('start em')
             acc = true;
-        } else console.log('no em')
+        } 
 
     } 
     return acc
@@ -127,4 +141,62 @@ function getValidPassword(pass, repPass) {
     return acc
 }
 
-export { checkForm } 
+//------------------------  Entrance  -------------------------------------------------
+
+// Entrance 
+function switchToPiano() {
+    validEntrance()
+}
+
+function validEntrance() {
+    if (validEntranceEmail() && validEntrancePass()) {
+        goToPiano()
+    } else {
+        errorEntranceText.classList.add('errorActive');
+    }
+}
+
+function goToPiano() {
+    errorEntranceText.classList.remove('errorActive')
+    window.location.href = "http://127.0.0.1:5500/piano.html"
+}
+
+// Entrance email's validation
+function validEntranceEmail() {
+    let acc = false;
+    const arr = JSON.parse(localStorage.getItem('users'))
+    arr.filter(el => {
+        if (el.user.email == emailEntranceInput.value) {
+            acc = true;
+        }
+    })
+
+    if (emailEntranceInput.value != '' && acc == true) {
+        return acc
+    } else {
+        acc = false;
+    }
+
+    return acc
+}
+
+// Entrance password's validation
+function validEntrancePass() {
+    let acc = false;
+    const arr = JSON.parse(localStorage.getItem('users'))
+    arr.filter(el => {
+        if (el.user.password == passwordEntranceInput.value) {
+            acc = true;
+        }
+    })
+
+    if (passwordEntranceInput.value != '' && acc == true) {
+        return acc
+    } else {
+        acc = false;
+    }
+
+    return acc
+}
+
+export { checkForm, switchToPiano, willVisible } 

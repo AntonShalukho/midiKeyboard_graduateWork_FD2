@@ -6,7 +6,7 @@
     z-index: 11;
 }
 
-.entranceWrapper {
+.entranceWrapperReg {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -27,7 +27,7 @@
     top: 0px;
 }
 
-.eye1, .eye2 {
+.eye1, .eye2, .eye3 {
     width: 23px;
     cursor: pointer;
     position: absolute;
@@ -69,61 +69,9 @@
 }
 
 .buttonRegistration {
-    display: flex;
-    justify-content: center;
-    align-items: center;
     margin-top: 30px;
-    border-radius: 10px;
-    width: 60%;
-    height: 45px;
     font-size: 2rem;
-    font-weight: bold;
-    color: #585858;
-    cursor: pointer;
-    background-color: #ff9800;
-    box-shadow: 0px 10px 13px #795548bf;
-    transition-duration: .1s;
 }
-
-.buttonRegistration:hover {
-    box-shadow: 4px 14px 17px #795548bf;
-}
-
-.buttonRegistration:active {
-    box-shadow: 4px 8px 11px #795548bf;
-}
-
-/* .check, .cross {
-    display: none;
-    width: 23px;
-    cursor: pointer;
-    position: absolute;
-    left: 312px;
-}
-
-.check1 {
-    top: 120px;
-}
-
-.cross1 {
-    top: 120px;
-}
-
-.check2 {
-    top: 194px;
-}
-
-.cross2 {
-    top: 194px;
-}
-
-.check3 {
-    top: 268px;
-}
-
-.cross3 {
-    top: 268px;
-} */
 
 .valid {
     border: 2px solid green;
@@ -139,11 +87,8 @@
     left: 59px;
     width: 70%;
     height: 30px;
-    /* border-radius: 10px; */
-    /* border: 1px solid red; */
     justify-content: center;
     align-items: center;
-    /* background-color: white; */
     color: red;
     font-weight: bold;
 }
@@ -155,7 +100,3 @@
 .invalidFormText2 {
     top: 455px;
 }
-
-/* .invalidFormText2 {
-    top: 226px;
-} */
