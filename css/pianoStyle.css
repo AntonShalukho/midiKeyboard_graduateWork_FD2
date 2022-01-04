@@ -1,5 +1,11 @@
+@import url(./accountStyle.css);
+
 body {
     margin: auto;
+    overflow: hidden;
+}
+
+.body {
     background: url(../png/png5.jpg);
     position: relative;
     width: 100vw;
@@ -29,6 +35,11 @@ body {
     flex-direction: column;
 }
 
+.title {
+    font-size: 24px; 
+    padding: 20px;
+}
+
 .song {
     font-size: 20px; 
     cursor: pointer; 
@@ -42,11 +53,7 @@ body {
     align-self: center;
     font-size: 24px; 
     padding: 10px;
-}
-
-.title {
-    font-size: 24px; 
-    padding: 20px
+    font-family: 'Cinzel', serif;
 }
 
 .butt {

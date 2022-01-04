@@ -1,5 +1,6 @@
 // Body
-const body = document.getElementById('body');
+const body = document.getElementById('root4');
+body.classList.add('body')
 const bodyShadow = document.createElement('div');
 bodyShadow.classList.add('bodyShadow');
 
@@ -25,7 +26,7 @@ const song3 = document.createElement('div');
 const song1Text = document.createElement('div');
 const song2Text = document.createElement('div');
 const song3Text = document.createElement('div');
-song1.append(`In the end(Linkin park),`);
+song1.append(`In the end (Linkin park),`);
 song2.append(`Ёлочка,`);
 song3.append(`Песенка Мамонтёнка`);
 song1Text.append(`S..HH..F..DDD..DF / 3 раза`);
@@ -202,6 +203,8 @@ function getWhiteAndBlackStyle() {
 }
 getWhiteAndBlackStyle()
 
+
+
 // Luggage
 Object.values(whiteKeys).filter(el => piano.append(el.keyCode))
 Object.values(blackKeys).filter(el => piano.append(el.keyCode))
@@ -369,3 +372,4 @@ function playSong(song) {
         }
     })
 }
+

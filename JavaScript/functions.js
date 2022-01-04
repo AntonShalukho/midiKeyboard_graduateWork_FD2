@@ -8,7 +8,6 @@ import { surnameInput } from './registration.js';
 import { emailEntranceInput } from './entrance.js';
 import { passwordEntranceInput } from './entrance.js';
 import { errorEntranceText } from './entrance.js';
-
 //-------------------------- Function: visible password  ---------------------------
 
 function willVisible(a, b) {
@@ -65,8 +64,10 @@ function getValid(form) {
 }
 
 // Create user's function 
-function setLocalInfo(form) {
-    let acc = JSON.parse(localStorage.getItem('users'));
+async function setLocalInfo(form) {
+    let acc = await JSON.parse(localStorage.getItem('users'));
+    const response = await fetch('https://rickandmortyapi.com/api/character', {method: 'GET'});
+    const resolve = await response.json();
 
     const obj = {
         id: acc.length + 1,
@@ -74,24 +75,29 @@ function setLocalInfo(form) {
             name: `${form.name.value}`,
             surname: `${form.surname.value}`,
             email: `${form.email.value}`,
-            password: `${form.password.value}`
+            password: `${form.password.value}`,
+            avatar: `${resolve.results[18].image}`
         }
     }
 
     acc[acc.length] = obj;
     localStorage.setItem('users', JSON.stringify(acc));
+    
     location.reload()
 }
 
 // Create first user's function
-function setFirstLocalInfo(form) {
+async function setFirstLocalInfo(form) {
+    const response = await fetch('https://rickandmortyapi.com/api/character', {method: 'GET'});
+    const resolve = await response.json();
     const obj = {
         id: 1,
         user: {
             name: `${form.name.value}`,
             surname: `${form.surname.value}`,
             email: `${form.email.value}`,
-            password: `${form.password.value}`
+            password: `${form.password.value}`,
+            avatar: `${resolve.results[18].image}`
         }
     }
 
@@ -168,6 +174,7 @@ function validEntranceEmail() {
     arr.filter(el => {
         if (el.user.email == emailEntranceInput.value) {
             acc = true;
+            localStorage.setItem('user', JSON.stringify(el))
         }
     })
 
@@ -175,6 +182,7 @@ function validEntranceEmail() {
         return acc
     } else {
         acc = false;
+
     }
 
     return acc
@@ -198,5 +206,21 @@ function validEntrancePass() {
 
     return acc
 }
+
+
+//------------------------------------------------------   Account  ---------------------------------
+
+async function setUser() {
+    const response = await fetch('https://rickandmortyapi.com/api/character', {method: 'GET'});
+    const resolve = await response.json();
+    const box = document.createElement('div');
+    for (let i of resolve.results) {
+        const img = document.createElement('img');
+        img.setAttribute('src', `${i.image}`);
+        box.append(img);
+    }
+    return box
+}
+
 
 export { checkForm, switchToPiano, willVisible } 

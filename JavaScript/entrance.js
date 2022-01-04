@@ -4,7 +4,7 @@ import { willVisible } from './functions.js';
 
 // ----------------------  Entrance form ---------------------------
 const root3 = document.getElementById('root3');
-root3.classList.add('root3')
+root3.classList.add('root3');
 
 // Entrance wrapper
 const entranceWrapper = document.createElement('div');
@@ -68,10 +68,7 @@ entrance.classList.add('butt');
 entrance.onclick = () => switchToPiano();
 
 
-// const forgotPass = document.createElement('input');
-// forgotPass.setAttribute('type', 'button');
-// forgotPass.setAttribute('value', 'Forgot password?');
-// forgotPass.classList.add('butt');
+
 entranceButtons.append(entrance);
 
 
