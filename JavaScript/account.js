@@ -47,11 +47,15 @@ function sayWelcome() {
 }
 sayWelcome()
 
-// Change's buttons
-const link1 = document.createElement('div');
+// ----------------  Change's buttons  -------------------------------
+
+// Change avatar
+const link1 = document.createElement('button');
 link1.classList.add('links', 'link1');
 link1.append('Change Avatar');
 link1.onclick = () => {
+    link1.setAttribute('disabled', 'disabled');
+    link1.classList.toggle('link1Act');
     icons.append(setUser());
     icons.removeChild(icons.firstChild);
     iconsWrapper.style.left = `-1084px`;
@@ -76,24 +80,34 @@ link1.onclick = () => {
                 while (icons.childNodes.length != 0) {
                     icons.removeChild(icons.firstChild);
                 }
-                document.removeEventListener('click', (e))
+                document.removeEventListener('click', (e));
+                link1.removeAttribute('disabled');
+                link1.classList.toggle('link1Act');
             }
         }
     })
 }
 
-
+// Change name
 const link2 = document.createElement('div');
 link2.classList.add('links', 'link2');
 link2.append('Change Name');
+const patForLink2 = '[A-Za-zА-Яа-яЁё-]{1,}';
+link2.onclick = () => {
+    openMark.style.display = 'none';
+    changeNameOrPass('name', patForLink2);
+}
 
+// Change pass
 const link3 = document.createElement('div');
 link3.classList.add('links', 'link3');
 link3.append('Change Password');
+const patForLink3 = '[0-9A-Za-z]{6,20}';
+link3.onclick = () => {
+    openMark.style.display = 'none';
+    changeNameOrPass('password', patForLink3);
+}
 
-const link4 = document.createElement('div');
-link4.classList.add('links', 'link4');
-link4.append('Instructions');
 
 // Avatar's Icons
 const iconsWrapper = document.createElement('div');
@@ -106,50 +120,109 @@ iconsWrapper.append(icons);
 
 // Luggage
 usersIcon.append(avatar);
-linksWrap.append(openMark, welcome, link1, link2, link3, link4);
+linksWrap.append(openMark, welcome, link1, link2, link3);
 wrapper.append(usersIcon, linksWrap, iconsWrapper);
 root5.append(wrapper);
 
-// let response = fetch('https://rickandmortyapi.com/api/character', {method: 'GET'}).then(a => a.json()).then(a => console.dir(a)).catch(a => console.log('error'));
 
-// async function getImage() {
-//     const response = await fetch('https://rickandmortyapi.com/api/character', {method: 'GET'});
-//     const resolve = await response.json();
-//     for (let i of resolve.results) {
-//         if (resolve.results[18] != i) {
-//             const img = document.createElement('img');
-//             img.setAttribute('src', `${i.image}`)
-//             root2.append(img)
-//         }
-//     }
-// }
-
-// getImage()
-
-// fetch('https://rickandmortyapi.com/api/character', {method: 'GET'})
-// .then(a => a.json())
-// .then(a => {
-//     console.log(a)
-//     avatar.setAttribute('src', `${a.results[18].image}`);
-// }).catch(a => console.info(`Avatar's src: Error!`))
 
 async function setUser() {
-    // fetch('https://rickandmortyapi.com/api/character', {method: 'GET'})
-    // .then(a => a.json())
-    // .then(a => {
-    //     console.log(a.results)
-    // }).catch(a => console.info(`Avatar's src: Error!`))
     const response = await fetch('https://rickandmortyapi.com/api/character', {method: 'GET'});
     const resolve = await response.json();
-    // const box = document.createElement('div');
+
     for (let i of resolve.results) {
-        if (resolve.results[18] != i) {
             const img = document.createElement('img');
             img.setAttribute('src', `${i.image}`);
             img.classList.add('avatar', 'icon');
             icons.append(img);
-        }
     }
-    // console.log(box)
-    // return box
 }
+
+// Change name's or password's function 
+
+function changeNameOrPass(type, pattern) {
+    const stor1 = JSON.parse(localStorage.getItem('users'));
+    const stor2 = JSON.parse(localStorage.getItem('user'));
+    const wrap = document.createElement('form');
+    wrap.classList.add('linksWrap', 'wrapName');
+    wrap.setAttribute('onsubmit', 'return false');
+
+    const nameImgClose = document.createElement('img');
+    nameImgClose.setAttribute('src', '../png/x_cross_delete_remove_icon_144023.svg')
+    nameImgClose.classList.add('nameImgClose');
+    nameImgClose.onclick = () => {
+        wrap.classList.toggle('wrapNameActive');
+        setTimeout(() => wrap.remove(wrap), 300);
+        openMark.style.display = 'block';
+    }
+
+    const case1 = document.createElement('input');
+    case1.setAttribute('type', 'text');
+    case1.setAttribute('placeholder', `Type your ${type}`)
+    case1.setAttribute('required', 'true');
+    case1.setAttribute('pattern', `${pattern}`);
+    case1.classList.add('links', 'nameCases');
+
+    const textErr1 = document.createElement('div');
+    textErr1.classList.add('textErr');
+    textErr1.append(`Invalid ${type}`)
+
+    const case2 = document.createElement('input');
+    case2.setAttribute('type', 'text');
+    case2.setAttribute('placeholder', `Type next ${type}`)
+    case2.setAttribute('required', 'true');
+    case2.setAttribute('pattern', `${pattern}`);
+    case2.classList.add('links', 'nameCases');
+
+    const textErr2 = document.createElement('div');
+    textErr2.classList.add('textErr');
+    textErr2.append(`Invalid ${type}`)
+
+    const caseButt = document.createElement('input');
+    caseButt.setAttribute('type', 'submit');
+    caseButt.setAttribute('value', 'Change');
+    caseButt.classList.add('links', 'caseButt');
+    caseButt.onclick = () => {
+        textErr1.style.opacity = `0`;
+        textErr2.style.opacity = `0`;
+            if (case1.value != '' || pattern.test(case1.value)) {
+                if (case1.value == stor2.user.name || case1.value == stor2.user.password) {
+                    let pat;
+                    if (type == 'name') {
+                        pat = /^[A-Za-zА-Яа-яЁё-]{1,}$/;
+                    } else {pat = /[0-9A-Za-z]{6,20}/}
+                    if (case2.value != '' && pat.test(case2.value)) {
+                        if (type == 'name') {
+                            for (let el of stor1) {
+                                if (el.user.name == stor2.user.name) {
+                                    el.user.name = case2.value;
+                                }
+                            }
+                            stor2.user.name = case2.value;
+                        } else {
+                            for (let el of stor1) {
+                                if (el.user.password == stor2.user.password) {
+                                    el.user.password = case2.value;
+                                }
+                            }
+                            stor2.user.password = case2.value;
+                        }
+                        localStorage.setItem('users', JSON.stringify(stor1));
+                        localStorage.setItem('user', JSON.stringify(stor2));
+                        if (type == 'name') {
+                            welcome.textContent = '';
+                            sayWelcome()
+                        }
+                        wrap.classList.toggle('wrapNameActive');
+                        setTimeout(() => wrap.remove(wrap), 300);
+                        openMark.style.display = 'block';
+                    } else {textErr2.style.opacity = `1`}
+                } else {textErr1.style.opacity = `1`}
+            } else {textErr1.style.opacity = `1`}
+    }
+
+    wrap.append(nameImgClose, case1, textErr1, case2, textErr2, caseButt);
+    linksWrap.append(wrap);
+    setTimeout(() => wrap.classList.toggle('wrapNameActive'), 100)
+}
+

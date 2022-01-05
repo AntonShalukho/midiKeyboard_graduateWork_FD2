@@ -96,9 +96,11 @@
     border-radius: 35px;
     border: 2px solid #ff9800;
     box-shadow: 0px 5px 10px white;
-    transition-duration: .1s;
     cursor: pointer;
     font-family: 'Luxurious Roman', cursive;
+    font-weight: bold;
+    color: rgb(104, 104, 104);
+    transition-duration: .1s;
 }
 
 .links:hover {
@@ -110,7 +112,17 @@
 }
 
 .link1 {
+    font-size: 1rem;
+}
 
+.link1Act {
+    box-shadow: none;
+    background-color: rgb(131 130 130);
+    border: none;
+}
+
+.link1Act:hover {
+    box-shadow: none;
 }
 
 .link2 {
@@ -151,4 +163,45 @@
 
 .icon:hover {
     box-shadow: 0px 0px 5px 5px #ff9800;
+}
+
+.wrapName {
+    top: 0px;
+    left: 300px;
+    justify-content: center;
+}
+
+.nameImgClose {
+    width: 35px;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    cursor: pointer;
+}
+
+.wrapNameActive {
+    left: 0px;
+}
+
+.nameCases {
+    cursor: auto;
+    box-shadow: none;
+    outline: none;
+}
+
+.nameCases:hover {
+    box-shadow: none;
+}
+.nameCases:active {
+    box-shadow: none;
+}
+
+.textErr {
+    color:red;
+    opacity: 0;
+    transition-duration: .1s;
+}
+
+.caseButt {
+    width: 40%;
 }
