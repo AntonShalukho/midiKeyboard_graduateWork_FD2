@@ -1,4 +1,5 @@
-
+import { removeListeners } from './piano.js';
+import { addListeners } from './piano.js';
 //----------------------------   Personal user's account  -------------------------------
 
 const root5 = document.getElementById('root5');
@@ -141,6 +142,7 @@ async function setUser() {
 // Change name's or password's function 
 
 function changeNameOrPass(type, pattern) {
+    removeListeners()
     const stor1 = JSON.parse(localStorage.getItem('users'));
     const stor2 = JSON.parse(localStorage.getItem('user'));
     const wrap = document.createElement('form');
@@ -154,6 +156,7 @@ function changeNameOrPass(type, pattern) {
         wrap.classList.toggle('wrapNameActive');
         setTimeout(() => wrap.remove(wrap), 300);
         openMark.style.display = 'block';
+        addListeners()
     }
 
     const case1 = document.createElement('input');
@@ -216,6 +219,7 @@ function changeNameOrPass(type, pattern) {
                         wrap.classList.toggle('wrapNameActive');
                         setTimeout(() => wrap.remove(wrap), 300);
                         openMark.style.display = 'block';
+                        addListeners()
                     } else {textErr2.style.opacity = `1`}
                 } else {textErr1.style.opacity = `1`}
             } else {textErr1.style.opacity = `1`}

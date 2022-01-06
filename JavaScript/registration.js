@@ -12,7 +12,7 @@ const entranceForm = document.createElement('div');
 // Wrapper
 const entranceWrapper = document.createElement('form');
 entranceWrapper.classList.add('entranceWrapperReg');
-entranceWrapper.setAttribute('onsubmit', 'return false');
+entranceWrapper.setAttribute('onsubmit', `return false`);
 // entranceWrapper.setAttribute('method', 'post');
 // entranceWrapper.onsubmit = () => checkForm(entranceWrapper);
 
@@ -36,8 +36,6 @@ const eye2 = document.createElement('img');
 eye2.setAttribute('src', '../png/eye-disible.svg');
 eye2.classList.add('eye2');
 
-
-
 eye1.onclick = () => willVisible(eye1, passwordInput);
 eye2.onclick = () => willVisible(eye2, repeatPasswordInput);
 
@@ -58,7 +56,7 @@ nameInput.setAttribute('type', 'text');
 nameInput.setAttribute('placeholder', 'Name');
 nameInput.setAttribute('required', 'true');
 nameInput.setAttribute('id', 'name');
-nameInput.setAttribute('pattern', '[A-Za-zА-Яа-яЁё-]{1,}');
+nameInput.setAttribute('pattern', '[-A-Za-zА-Яа-яЁё ]{1,15}');
 nameInput.setAttribute('title', 'The name have be Latin or Cyrillic letters');
 nameInput.classList.add('formFactor');
 entranceName.append(nameInput);
@@ -71,7 +69,7 @@ surnameInput.setAttribute('type', 'text');
 surnameInput.setAttribute('placeholder', 'Surname');
 surnameInput.setAttribute('required', 'true');
 surnameInput.setAttribute('id', 'surname');
-surnameInput.setAttribute('pattern', '[A-Za-zА-Яа-яЁё-]{1,}');
+surnameInput.setAttribute('pattern', `[-A-Za-zА-Яа-яЁё ]{1,15}`);
 surnameInput.setAttribute('title', 'The name have be Latin or Cyrillic letters');
 surnameInput.classList.add('formFactor');
 entranceName.append(surnameInput);
@@ -82,8 +80,10 @@ emailInput.setAttribute('type', 'email');
 emailInput.setAttribute('placeholder', 'Email');
 emailInput.setAttribute('required', 'true');
 emailInput.setAttribute('id', 'email');
-emailInput.setAttribute('pattern', '/^(|(([A-Za-z0-9]+_+)|([A-Za-z0-9]+\-+)|([A-Za-z0-9]+\.+)|([A-Za-z0-9]+\++))*[A-Za-z0-9]+@((\w+\-+)|(\w+\.))*\w{1,63}\.[a-zA-Z]{2,6})$/i');
-emailInput.setAttribute('title', 'Invalid Email');
+// emailInput.setAttribute('pattern', '^(|(([A-Za-z0-9]+_+)|([A-Za-z0-9]+\-+)|([A-Za-z0-9]+\.+)|([A-Za-z0-9]+\++))*[A-Za-z0-9]+@((\w+\-+)|(\w+\.))*\w{1,63}\.[a-zA-Z]{2,6})$/i');
+// emailInput.setAttribute('pattern', '/^([\s]*?)([\d\D]{1,})+@([A-Za-z0-9]{1,15})+([.][A-Za-z0-9]{1,10})([\s]*?)$/i');
+// emailInput.setAttribute('pattern', '([\d\D]{1,})+@([A-Za-z0-9]{1,15})+([.][A-Za-z0-9]{1,10})');
+emailInput.setAttribute('title', 'Invalid Email. Maybe you made space');
 emailInput.classList.add('formFactor');
 entranceName.append(emailInput);
 
@@ -116,9 +116,9 @@ repeatPasswordInput.classList.add('formFactor');
 entranceName.append(repeatPasswordInput);
 repeatPasswordInput.onkeyup = () => {
     if (passwordInput.value == repeatPasswordInput.value) {
-        repeatPasswordInput.style.border = `1px solid green`;
+        repeatPasswordInput.style.border = `2px solid green`;
     } else {
-        repeatPasswordInput.style.border = `1px solid red`
+        repeatPasswordInput.style.border = `2px solid red`
     }
 }
 
@@ -148,7 +148,6 @@ entranceWrapper.append(
 );
 entranceForm.append(entranceWrapper);
 root2.append(entranceForm);
-
 
 export { root2, 
     nameInput, 

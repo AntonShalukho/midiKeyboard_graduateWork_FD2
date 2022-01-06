@@ -1,4 +1,6 @@
 import { emailInput } from './registration.js';
+import { pictureFirstShadow } from './script.js';
+import { root2 } from './registration.js';
 import { invalidFormText1 } from './registration.js';
 import { invalidFormText2 } from './registration.js';
 import { repeatPasswordInput } from './registration.js';
@@ -31,14 +33,16 @@ function checkForm(form) {
 function getValid(form) {
     invalidFormText1.style.display = 'none';
     invalidFormText2.style.display = 'none';
+    invalidFormText1.textContent = 'User with same email has been registrationed';
     if (getValidName(nameInput) && getValidName(surnameInput)) {
-
+        console.log('1');
         if (getValidEmail(emailInput)) {
-            
+            console.log('2');
             const arr = JSON.parse(localStorage.getItem('users'));
             let acc = true;
 
             if (arr != null || arr) {
+                console.log('3');
                 endFor:
                 for (let i of arr) {
                     if (i.user.email == emailInput.value) {
@@ -50,6 +54,7 @@ function getValid(form) {
             } 
 
             if (acc) {
+                console.log('4');
                 if (getValidPassword(passwordInput, repeatPasswordInput)) {
                     if (localStorage.getItem('users')) {
                         setLocalInfo(form);
@@ -58,6 +63,10 @@ function getValid(form) {
                     }
                 } else {invalidFormText2.style.display = 'flex'}
             }
+        } else {
+            invalidFormText1.style.display = 'flex';
+            invalidFormText1.textContent = 'Invalid email';
+
         }
     }
 
@@ -68,12 +77,19 @@ async function setLocalInfo(form) {
     let acc = await JSON.parse(localStorage.getItem('users'));
     const response = await fetch('https://rickandmortyapi.com/api/character', {method: 'GET'});
     const resolve = await response.json();
-
+    let name = form.name.value;
+    const nameArr = name.split(' ');
+    name = nameArr.join('');
+    name = name[0].toUpperCase() + name.slice(1);
+    let surname = form.surname.value;
+    const surnameArr = surname.split(' ');
+    surname = surnameArr.join('');
+    surname = surname[0].toUpperCase() + surname.slice(1);
     const obj = {
         id: acc.length + 1,
         user: {
-            name: `${form.name.value}`,
-            surname: `${form.surname.value}`,
+            name: `${name}`,
+            surname: `${surname}`,
             email: `${form.email.value}`,
             password: `${form.password.value}`,
             avatar: `${resolve.results[18].image}`
@@ -82,19 +98,28 @@ async function setLocalInfo(form) {
 
     acc[acc.length] = obj;
     localStorage.setItem('users', JSON.stringify(acc));
-    
-    location.reload()
+    root2.style.display = 'none';
+    pictureFirstShadow.style.zIndex = '1';
+    // location.reload()
 }
 
 // Create first user's function
 async function setFirstLocalInfo(form) {
     const response = await fetch('https://rickandmortyapi.com/api/character', {method: 'GET'});
     const resolve = await response.json();
+    let name = form.name.value;
+    const nameArr = name.split(' ');
+    name = nameArr.join('');
+    name = name[0].toUpperCase() + name.slice(1);
+    let surname = form.surname.value;
+    const surnameArr = surname.split(' ');
+    surname = surnameArr.join('');
+    surname = surname[0].toUpperCase() + surname.slice(1);
     const obj = {
         id: 1,
         user: {
-            name: `${form.name.value}`,
-            surname: `${form.surname.value}`,
+            name: `${name}`,
+            surname: `${surname}`,
             email: `${form.email.value}`,
             password: `${form.password.value}`,
             avatar: `${resolve.results[18].image}`
@@ -103,17 +128,19 @@ async function setFirstLocalInfo(form) {
 
     let acc = [obj];
     localStorage.setItem('users', JSON.stringify(acc));
-    location.reload()
+    root2.style.display = 'none';
+    pictureFirstShadow.style.zIndex = '1';
+    // location.reload()
 }
 
 
 // Valid name's function
 function getValidName(inp) {
-    const r = /^[A-Za-zА-Яа-яЁё-]{1,}$/;
+    const reg = /^[-A-Za-zА-Яа-яЁё/ ]{1,15}$/; 
     let acc = false;
 
     if (inp.value != '') {
-        if (r.test(inp.value)) {
+        if (reg.test(inp.value)) {
             acc = true;
         }
     } 
@@ -122,7 +149,9 @@ function getValidName(inp) {
 
 // Valid email's function
 function getValidEmail(email) {
-    const r = /^(|(([A-Za-z0-9]+_+)|([A-Za-z0-9]+\-+)|([A-Za-z0-9]+\.+)|([A-Za-z0-9]+\++))*[A-Za-z0-9]+@((\w+\-+)|(\w+\.))*\w{1,63}\.[a-zA-Z]{2,6})$/i;
+    // const r = /^(|(([A-Za-z0-9]+_+)|([A-Za-z0-9]+\-+)|([A-Za-z0-9]+\.+)|([A-Za-z0-9]+\++))*[A-Za-z0-9]+@((\w+\-+)|(\w+\.))*\w{1,63}\.[a-zA-Z]{2,6})$/i;
+    // const r = /^([\s]*?)([\d\D]{1,})+@([A-Za-z0-9]{1,15})+([.][A-Za-z0-9]{1,10})([\s]*?)$/i;
+    const r = /^([a-z0-9!#$%&'*+/=?^_`{|}~-]{1,})+@([A-Za-z0-9]{1,15})+([.][A-Za-z0-9]{1,10})$/i;
     let acc = false;
 
     if (email.value != '') {
@@ -193,7 +222,7 @@ function validEntrancePass() {
     let acc = false;
     const arr = JSON.parse(localStorage.getItem('users'))
     arr.filter(el => {
-        if (el.user.password == passwordEntranceInput.value) {
+        if (el.user.password === passwordEntranceInput.value && el.user.email ===emailEntranceInput.value) {
             acc = true;
         }
     })

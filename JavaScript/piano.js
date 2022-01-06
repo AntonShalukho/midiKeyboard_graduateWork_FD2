@@ -211,7 +211,8 @@ Object.values(blackKeys).filter(el => piano.append(el.keyCode))
 body.append(piano);
 
 
-addEventListener('keydown', (event) => {
+addEventListener('keydown', pushKeyDown)
+function pushKeyDown(event) {
     forWhite:
     for (let i in whiteKeys) {
         if (i == event.code) {
@@ -233,7 +234,7 @@ addEventListener('keydown', (event) => {
             break forBlack
         }
     }
-})
+}
 
 
 addEventListener('mousedown', (event) => {
@@ -261,8 +262,8 @@ addEventListener('mousedown', (event) => {
 });
 
 
-addEventListener('keyup', (event) => {
-
+addEventListener('keyup', pushKeyUp);
+function pushKeyUp(event) {
     forWhite:
     for (let i in whiteKeys) {
         if (i == event.code) {
@@ -284,7 +285,7 @@ addEventListener('keyup', (event) => {
             break forBlack
         }
     }
-})
+}
 
 
 addEventListener('mouseup', (event) => {
@@ -373,3 +374,17 @@ function playSong(song) {
     })
 }
 
+
+function removeListeners() {
+    removeEventListener('keydown', pushKeyDown);
+    removeEventListener('keyup', pushKeyUp);
+}
+function addListeners() {
+    addEventListener('keydown', pushKeyDown);
+    addEventListener('keyup', pushKeyUp);
+}
+
+export {  
+    addListeners,
+    removeListeners
+}
