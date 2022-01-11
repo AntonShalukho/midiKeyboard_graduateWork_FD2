@@ -13,15 +13,14 @@ const entranceForm = document.createElement('div');
 const entranceWrapper = document.createElement('form');
 entranceWrapper.classList.add('entranceWrapperReg');
 entranceWrapper.setAttribute('onsubmit', `return false`);
-// entranceWrapper.setAttribute('method', 'post');
-// entranceWrapper.onsubmit = () => checkForm(entranceWrapper);
 
 
 // Back mark
 const backMark = document.createElement('img');
 backMark.setAttribute('src', '../png/backSVG.svg');
 backMark.classList.add('backMark');
-backMark.onclick = () => {
+backMark.addEventListener('click', removeBackMarkHandler)
+function removeBackMarkHandler() {
     pictureFirstShadow.style.zIndex = '1';
     root2.style.display = 'none';
 }
@@ -136,7 +135,8 @@ buttonRegistration.setAttribute('type', 'submit');
 buttonRegistration.setAttribute('id', 'button');
 buttonRegistration.classList.add('butt', 'buttonRegistration');
 buttonRegistration.append('Log in');
-buttonRegistration.onclick = () => checkForm(entranceWrapper);
+buttonRegistration.addEventListener('click', checkForm)
+// buttonRegistration.onclick = () => checkForm(entranceWrapper);
 
 // Luggage
 entranceWrapper.append(
@@ -150,6 +150,7 @@ entranceForm.append(entranceWrapper);
 root2.append(entranceForm);
 
 export { root2, 
+    entranceWrapper,
     nameInput, 
     surnameInput,
     emailInput,

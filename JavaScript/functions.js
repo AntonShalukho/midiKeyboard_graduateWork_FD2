@@ -1,6 +1,14 @@
 import { emailInput } from './registration.js';
 import { pictureFirstShadow } from './script.js';
+import { getEnter } from './script.js';
+import { buttonLogIn } from './script.js';
+import { buttonEnter } from './script.js';
+import { root } from './script.js';
 import { root2 } from './registration.js';
+import { root3 } from './entrance.js';
+import { root4 } from './piano.js';
+import { buttonExit } from './piano.js';
+import { entranceWrapper } from './registration.js';
 import { invalidFormText1 } from './registration.js';
 import { invalidFormText2 } from './registration.js';
 import { repeatPasswordInput } from './registration.js';
@@ -10,6 +18,7 @@ import { surnameInput } from './registration.js';
 import { emailEntranceInput } from './entrance.js';
 import { passwordEntranceInput } from './entrance.js';
 import { errorEntranceText } from './entrance.js';
+import { main } from './index.js';
 //-------------------------- Function: visible password  ---------------------------
 
 function willVisible(a, b) {
@@ -25,8 +34,8 @@ function willVisible(a, b) {
 //-----------------------  Check form  -----------------------
 
 //Check function
-function checkForm(form) {
-    getValid(form)
+function checkForm() {
+    getValid(entranceWrapper)
 }
 
 // Valid function
@@ -192,8 +201,17 @@ function validEntrance() {
 }
 
 function goToPiano() {
-    errorEntranceText.classList.remove('errorActive')
-    window.location.href = "http://127.0.0.1:5500/piano.html"
+    errorEntranceText.classList.remove('errorActive');
+    root.style.display = 'none';
+    root2.style.display = 'none';
+    root3.style.display = 'none';
+    root4.style.display = 'flex';
+    pictureFirstShadow.style.zIndex = '1';
+    buttonExit.addEventListener('click', exitHandler);
+    buttonLogIn.removeEventListener('click', getEnter);
+    buttonEnter.removeEventListener('click', getEnter) ;
+    main.removeChild(root);
+    main.append(root4);
 }
 
 // Entrance email's validation
@@ -250,6 +268,27 @@ async function setUser() {
     }
     return box
 }
+
+//--------------------------------------------------------  Exit  ------------------------------------
+
+function exitHandler() {
+    root.style.display = 'block';
+    root4.style.display = 'none';
+    buttonExit.removeEventListener('click', exitHandler);
+    buttonLogIn.addEventListener('click', getEnter);
+    buttonEnter.addEventListener('click', getEnter);
+    main.removeChild(root4);
+    main.append(root);
+}
+
+// function changePages(main) {
+//     const root4 = document.createElement('div');
+//     root4.setAttribute('id', 'root4');
+//     const root5 = document.createElement('div');
+//     root5.setAttribute('id', 'root5');
+
+//     main.append(root4, root5)
+// }
 
 
 export { checkForm, switchToPiano, willVisible } 

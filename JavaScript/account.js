@@ -1,8 +1,9 @@
-import { removeListeners } from './piano.js';
-import { addListeners } from './piano.js';
+// import { removeListeners } from './piano.js';
+// import { addListeners } from './piano.js';
 //----------------------------   Personal user's account  -------------------------------
 
 const root5 = document.getElementById('root5');
+root5.classList.add('root5');
 
 // Account's wrapper
 const wrapper = document.createElement('div');

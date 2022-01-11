@@ -1,8 +1,15 @@
 @import url(./regStyle.css);
 @import url(./entranceStyle.css);
+@import url(./accountStyle.css);
+@import url(./pianoStyle.css);
 
 body {
     margin: auto;
+    overflow: hidden;
+}
+
+.root1 {
+    display: block;
 }
 
 .clock {
@@ -25,7 +32,7 @@ body {
     font-size: 44px;
     z-index: 2;
     position: absolute;
-    left: -40%;
+    left: -45%;
     transition-duration: 2s;
 }
 
@@ -48,7 +55,6 @@ body {
 
 .pictureFirstContent3 { 
     top: 58%; 
-    
 }
 
 .buttonWrapper {
@@ -71,6 +77,14 @@ body {
     transition-duration: .2s;
     position: absolute;
     top: 0px;
+}
+
+.button:hover {
+    box-shadow: 0px 10px 13px #795548bf; top: -5px;;
+}
+
+.button:active {
+    box-shadow: 0px 5px 8px #795548bf; top: 0px;
 }
 
 .buttonLogIn {

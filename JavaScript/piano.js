@@ -1,9 +1,16 @@
 // Body
-const body = document.getElementById('root4');
-body.classList.add('body')
+
+const root4 = document.createElement('div');
+root4.setAttribute('id', 'root4');
+root4.classList.add('root4')
 const bodyShadow = document.createElement('div');
 bodyShadow.classList.add('bodyShadow');
 
+
+// Button exit
+const buttonExit = document.createElement('div');
+buttonExit.classList.add('buttonExit');
+buttonExit.append('Exit');
 
 /*
 -----------------------  Template with music notes  -----------------------------------
@@ -37,7 +44,7 @@ songNames.append(song1, song2, song3);
 
 // Navigation buttons 
 const butt = document.createElement('div');
-butt.classList.add('butt');
+butt.classList.add('buttWrapper');
 
 const buttBack = document.createElement('div');
 buttBack.classList.add('buttBack');
@@ -78,9 +85,7 @@ Object.values(songObject).filter(el => {
     el.text.classList.add('text');
 });
 
-// Luggage
-note.append(title, songNames, song1Text, song2Text, song3Text, butt);
-body.append(bodyShadow, note);
+
 
 /* 
 -----------------------------  Piano's keys  ----------------------
@@ -176,6 +181,136 @@ const blackKeys = {'KeyW': {keyCode: blackKeyC1, audio: audioBlackKeyC1, keyName
                 'Numpad8': {keyCode: blackKeyA2, audio: audioBlackKeyA2, keyName: 'Numpad8'}
 };
 
+// Keys's building
+getWhiteAndBlackStyle()
+
+
+//---------------------------------  Events  ----------------------------------
+//my function
+addPianoListeners();
+//---
+piano.addEventListener('mousedown', pushKeyDown);
+piano.addEventListener('mouseup', pushKeyUp);
+
+note.addEventListener('click', choiceSongForPlay);
+note.addEventListener('click', typeButtBack);
+note.addEventListener('click', choiceSong);
+
+
+
+/*
+    -------------------------  ____USER ACCOUNT____  ---------------------
+*/
+
+const root5 = document.createElement('div');
+root5.setAttribute('id', 'root5');
+root5.classList.add('root5');
+
+// Account's wrapper
+const wrapper = document.createElement('div');
+wrapper.classList.add('wrapper');
+
+// --------- Account's icon ------------------
+const usersIcon = document.createElement('div');
+usersIcon.classList.add('usersIcon');
+
+const avatar = document.createElement('img');
+avatar.classList.add('avatar');
+avatar.setAttribute('src', getAvatar());
+
+function getAvatar() {
+    const acc = JSON.parse(localStorage.getItem('user'));
+    const src = acc.user.avatar;
+    return src
+}
+
+// -----------  Account's links ---------------
+const linksWrap = document.createElement('div'); 
+linksWrap.classList.add('linksWrap');
+
+// Open and close mark
+const openMark = document.createElement('div');
+openMark.classList.add('openMark');
+openMark.onclick = () => {
+    imgMark.classList.toggle('imgMarkActive');
+    linksWrap.classList.toggle('linksWrapActive');
+    sayWelcome()
+}
+
+const imgMark = document.createElement('img');
+imgMark.classList.add('imgMark');
+imgMark.setAttribute('src', '../png/closeSVG.svg');
+
+openMark.append(imgMark);
+
+// Say hello text
+const welcome = document.createElement('div');
+welcome.classList.add('welcome');
+function sayWelcome() {
+    const name = JSON.parse(localStorage.getItem('user')).user.name;
+    welcome.textContent = '';
+    welcome.append(`Welcome ${name}`);
+}
+sayWelcome()
+
+// ----------------  Change's buttons  -------------------------------
+
+// Change avatar
+const link1 = document.createElement('button');
+link1.classList.add('links', 'link1');
+link1.append('Change Avatar');
+link1.addEventListener('click', changeAvatar);
+
+
+// Change name
+const link2 = document.createElement('div');
+link2.classList.add('links', 'link2');
+link2.append('Change Name');
+const patForLink2 = '[A-Za-zА-Яа-яЁё-]{1,}';
+link2.onclick = () => {
+    openMark.style.display = 'none';
+    changeNameOrPass('name', patForLink2);
+}
+
+// Change pass
+const link3 = document.createElement('div');
+link3.classList.add('links', 'link3');
+link3.append('Change Password');
+const patForLink3 = '[0-9A-Za-z]{6,20}';
+link3.onclick = () => {
+    openMark.style.display = 'none';
+    changeNameOrPass('password', patForLink3);
+}
+
+
+// Avatar's Icons
+
+
+   
+
+
+
+
+// --------------------- Luggage --------------------------------
+usersIcon.append(avatar);
+linksWrap.append(openMark, welcome, link1, link2, link3);
+wrapper.append(usersIcon, linksWrap);
+root5.append(wrapper);
+
+note.append(title, songNames, song1Text, song2Text, song3Text, butt);
+root4.append(bodyShadow, note);
+
+Object.values(whiteKeys).filter(el => piano.append(el.keyCode))
+Object.values(blackKeys).filter(el => piano.append(el.keyCode))
+root4.append(piano, buttonExit, root5);
+
+
+/*
+    ------------------------------ _____Functions_____ -----------------------------
+*/
+
+
+
 // Function for keys's building 
 function getWhiteAndBlackStyle() {
     const arr = [4, 10.8, 24.1, 30.8, 37.5, 50.9, 57.6, 71, 77.7, 84.4];
@@ -201,21 +336,12 @@ function getWhiteAndBlackStyle() {
         acc++;
     }
 }
-getWhiteAndBlackStyle()
 
-
-
-// Luggage
-Object.values(whiteKeys).filter(el => piano.append(el.keyCode))
-Object.values(blackKeys).filter(el => piano.append(el.keyCode))
-body.append(piano);
-
-
-addEventListener('keydown', pushKeyDown)
+//---------------------------- Piano's functions -----------------------------------
 function pushKeyDown(event) {
     forWhite:
     for (let i in whiteKeys) {
-        if (i == event.code) {
+        if (whiteKeys[i].keyCode == event.target || i == event.code) {
             whiteKeys[i].keyCode.style.backgroundColor = `bisque`;
             whiteKeys[i].keyCode.style.border = `3px solid black`;
             whiteKeys[i].keyCode.style.height = `91%`; 
@@ -226,7 +352,7 @@ function pushKeyDown(event) {
     }
     forBlack:
     for (let i in blackKeys) {
-        if (i == event.code) {
+        if (blackKeys[i].keyCode == event.target || i == event.code) {
             blackKeys[i].keyCode.style.borderBottom = `solid 0rem black`;
             blackKeys[i].keyCode.style.borderLeft = `solid 0rem black`;
             blackKeys[i].keyCode.style.height = `53.5%`; 
@@ -236,37 +362,10 @@ function pushKeyDown(event) {
     }
 }
 
-
-addEventListener('mousedown', (event) => {
-    forWhite:
-    for (let i in whiteKeys) {
-        if (event.path[0] == whiteKeys[i].keyCode) {
-            whiteKeys[i].keyCode.style.backgroundColor = `bisque`;
-            whiteKeys[i].keyCode.style.border = `3px solid black`;
-            whiteKeys[i].keyCode.style.height = `91%`; 
-            whiteKeys[i].keyCode.style.width = `86px`; 
-            whiteKeys[i].audio.play(); 
-            break forWhite
-        }
-    }
-    forBlack:
-    for (let i in blackKeys) {
-        if (event.path[0] == blackKeys[i].keyCode) {
-            blackKeys[i].keyCode.style.borderBottom = `solid 0rem black`;
-            blackKeys[i].keyCode.style.borderLeft = `solid 0rem black`;
-            blackKeys[i].keyCode.style.height = `53.5%`; 
-            blackKeys[i].audio.play(); 
-            break forBlack
-        }
-    }
-});
-
-
-addEventListener('keyup', pushKeyUp);
 function pushKeyUp(event) {
     forWhite:
     for (let i in whiteKeys) {
-        if (i == event.code) {
+        if (whiteKeys[i].keyCode == event.target || i == event.code) {
             whiteKeys[i].keyCode.style.backgroundColor = `white`;
             whiteKeys[i].keyCode.style.border = `1px solid black`;
             whiteKeys[i].keyCode.style.height = `90%`; 
@@ -277,7 +376,7 @@ function pushKeyUp(event) {
     }
     forBlack:
     for (let i in blackKeys) {
-        if (i == event.code) {
+        if (blackKeys[i].keyCode == event.target || i == event.code) {
             blackKeys[i].keyCode.style.borderBottom = `solid 0.8rem black`;
             blackKeys[i].keyCode.style.borderLeft = `solid 0.3rem black`;
             blackKeys[i].keyCode.style.height = `50%`; 
@@ -288,50 +387,28 @@ function pushKeyUp(event) {
 }
 
 
-addEventListener('mouseup', (event) => {
-
-    forWhite:
-    for (let i in whiteKeys) {
-        if (event.path[0] == whiteKeys[i].keyCode) {
-            whiteKeys[i].keyCode.style.backgroundColor = `white`;
-            whiteKeys[i].keyCode.style.border = `1px solid black`;
-            whiteKeys[i].keyCode.style.height = `90%`; 
-            whiteKeys[i].keyCode.style.width = `90px`; 
-            whiteKeys[i].audio.load(); 
-            break forWhite
-        }
-    }
-    forBlack:
-    for (let i in blackKeys) {
-        if (event.path[0] == blackKeys[i].keyCode) {
-            blackKeys[i].keyCode.style.borderBottom = `solid 0.8rem black`;
-            blackKeys[i].keyCode.style.borderLeft = `solid 0.3rem black`;
-            blackKeys[i].keyCode.style.height = `50%`; 
-            blackKeys[i].audio.load(); 
-            break forBlack
-        }
-    }
-})
-
-
-addEventListener('click', (event) => {
-    for (let i in songObject) {
-        if (event.path[0] == songObject[i].song) {
-            title.style.display = 'none'; 
-            songNames.style.display = 'none'; 
-            songObject[i].text.style.display = 'flex';
-            butt.style.display = 'flex'
-        }
-    }
-
-    if (event.path[0] == buttBack) {
+//------------------------------  Function for navigation of songs  ----------------------
+function typeButtBack(event) {
+    if (event.target == buttBack) {
         title.style.display = 'block'; 
         songNames.style.display = 'block';
         Object.values(songObject).filter(el => el.text.style.display = 'none')
         butt.style.display = 'none'
     }
+}
 
-    if (event.path[0] == buttPlay) {
+function choiceSong(event) {
+    if (event.target == songObject[i].song) {
+        title.style.display = 'none'; 
+        songNames.style.display = 'none'; 
+        songObject[i].text.style.display = 'flex';
+        butt.style.display = 'flex'
+    }
+}
+
+//--------------------------------------  Function for autoplay's songs  -----------------
+function choiceSongForPlay(event) {
+    if (event.target == buttPlay) {
         if (song1Text.style.display == 'flex') {
             playSong(song1TextContent)
         }
@@ -342,8 +419,7 @@ addEventListener('click', (event) => {
             playSong(song3TextContent)
         }
     }
-})
-
+}
 
 function playSong(song) {
     const acc = song.split(' ');
@@ -375,16 +451,167 @@ function playSong(song) {
 }
 
 
-function removeListeners() {
-    removeEventListener('keydown', pushKeyDown);
-    removeEventListener('keyup', pushKeyUp);
+
+// ------------------ Change name's or password's function --------------------------
+
+function changeNameOrPass(type, pattern) {
+    const stor1 = JSON.parse(localStorage.getItem('users'));
+    const stor2 = JSON.parse(localStorage.getItem('user'));
+    const wrap = document.createElement('form');
+    wrap.classList.add('linksWrap', 'wrapName');
+    wrap.setAttribute('onsubmit', 'return false');
+
+    const nameImgClose = document.createElement('img');
+    nameImgClose.setAttribute('src', '../png/x_cross_delete_remove_icon_144023.svg')
+    nameImgClose.classList.add('nameImgClose');
+    nameImgClose.onclick = () => {
+        wrap.classList.toggle('wrapNameActive');
+        setTimeout(() => wrap.remove(), 300);
+        openMark.style.display = 'block';
+        addPianoListeners()
+    }
+
+    const case1 = document.createElement('input');
+    case1.setAttribute('type', 'text');
+    case1.setAttribute('placeholder', `Type your ${type}`)
+    case1.setAttribute('required', 'true');
+    case1.setAttribute('pattern', `${pattern}`);
+    case1.classList.add('links', 'nameCases');
+
+    const textErr1 = document.createElement('div');
+    textErr1.classList.add('textErr');
+    textErr1.append(`Invalid ${type}`)
+
+    const case2 = document.createElement('input');
+    case2.setAttribute('type', 'text');
+    case2.setAttribute('placeholder', `Type next ${type}`)
+    case2.setAttribute('required', 'true');
+    case2.setAttribute('pattern', `${pattern}`);
+    case2.classList.add('links', 'nameCases');
+
+    const textErr2 = document.createElement('div');
+    textErr2.classList.add('textErr');
+    textErr2.append(`Invalid ${type}`)
+
+    const caseButt = document.createElement('input');
+    caseButt.setAttribute('type', 'submit');
+    caseButt.setAttribute('value', 'Change');
+    caseButt.classList.add('links', 'caseButt');
+    caseButt.addEventListener('click', doCaseButt);
+    function doCaseButt() {
+        removePianoListeners()
+        textErr1.style.opacity = `0`;
+        textErr2.style.opacity = `0`;
+            if (case1.value != '' || pattern.test(case1.value)) {
+                if (case1.value == stor2.user.name || case1.value == stor2.user.password) {
+                    let pat;
+                    if (type == 'name') {
+                        pat = /^[A-Za-zА-Яа-яЁё-]{1,}$/;
+                    } else {pat = /[0-9A-Za-z]{6,20}/}
+                    if (case2.value != '' && pat.test(case2.value)) {
+                        if (type == 'name') {
+                            for (let el of stor1) {
+                                if (el.user.name == stor2.user.name) {
+                                    el.user.name = case2.value;
+                                }
+                            }
+                            stor2.user.name = case2.value;
+                        } else {
+                            for (let el of stor1) {
+                                if (el.user.password == stor2.user.password) {
+                                    el.user.password = case2.value;
+                                }
+                            }
+                            stor2.user.password = case2.value;
+                        }
+                        localStorage.setItem('users', JSON.stringify(stor1));
+                        localStorage.setItem('user', JSON.stringify(stor2));
+                        if (type == 'name') {
+                            welcome.textContent = '';
+                            sayWelcome()
+                        }
+                        wrap.classList.toggle('wrapNameActive');
+                        setTimeout(() => wrap.remove(), 300);
+                        openMark.style.display = 'block';
+                        addPianoListeners()
+                    } else {textErr2.style.opacity = `1`}
+                } else {textErr1.style.opacity = `1`}
+            } else {textErr1.style.opacity = `1`}
+    }
+
+    wrap.append(nameImgClose, case1, textErr1, case2, textErr2, caseButt);
+    linksWrap.append(wrap);
+    setTimeout(() => wrap.classList.toggle('wrapNameActive'), 100)
 }
-function addListeners() {
+
+function addPianoListeners() {
     addEventListener('keydown', pushKeyDown);
     addEventListener('keyup', pushKeyUp);
 }
+function removePianoListeners() {
+    removeEventListener('keydown', pushKeyDown);
+    removeEventListener('keyup', pushKeyUp);
+}
+
+// ------------------- Change avatar function  -----------------------
+function changeAvatar() {
+    const iconsWrapper = document.createElement('div');
+    wrapper.append(iconsWrapper);
+    iconsWrapper.classList.add('iconsWrapper');
+    const icons = document.createElement('div');
+    icons.classList.add('icons');
+    iconsWrapper.append(icons);
+    link1.setAttribute('disabled', 'disabled');
+    link1.classList.toggle('link1Act');
+    icons.append(setUser());
+    icons.removeChild(icons.firstChild);
+    iconsWrapper.style.left = `-1084px`;
+    iconsWrapper.addEventListener('click', removeAvatarsWrapper, {once: true});
+    // Remove wrapper function 
+    function removeAvatarsWrapper(event) {
+        for (let i of icons.childNodes) {
+
+            if (event.target == i) {
+                avatar.setAttribute('src', `${i.src}`);
+                iconsWrapper.style.left = `152px`;
+                const acc1 = JSON.parse(localStorage.getItem('users'));
+                const acc2 = JSON.parse(localStorage.getItem('user'));
+
+                for (let j of acc1) {
+
+                    if (j.user.email == acc2.user.email) {
+                        acc2.user.avatar = i.src;
+                        j.user.avatar = i.src;
+                    }
+                }
+                localStorage.setItem('users', JSON.stringify(acc1));
+                localStorage.setItem('user', JSON.stringify(acc2));
+                link1.removeAttribute('disabled');
+                link1.classList.toggle('link1Act');
+                setTimeout(() => iconsWrapper.remove(), 500);
+            }
+        }
+    }
+    // Change avatar function 
+    async function setUser() {
+        const response = await fetch('https://rickandmortyapi.com/api/character', {method: 'GET'});
+        const resolve = await response.json();
+
+        for (let i of resolve.results) {
+                const img = document.createElement('img');
+                img.setAttribute('src', `${i.image}`);
+                img.classList.add('avatar', 'icon');
+                icons.append(img);
+        }
+    }  
+} 
+
+/*
+    -----------  ____EXPORT____  ------------
+*/
+
 
 export {  
-    addListeners,
-    removeListeners
+    root4,
+    buttonExit
 }
