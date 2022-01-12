@@ -1,3 +1,5 @@
+import { getAvatar } from './functions.js'
+
 // Body
 
 const root4 = document.createElement('div');
@@ -187,7 +189,7 @@ getWhiteAndBlackStyle()
 
 //---------------------------------  Events  ----------------------------------
 //my function
-addPianoListeners();
+// addPianoListeners();
 //---
 piano.addEventListener('mousedown', pushKeyDown);
 piano.addEventListener('mouseup', pushKeyUp);
@@ -218,11 +220,6 @@ const avatar = document.createElement('img');
 avatar.classList.add('avatar');
 avatar.setAttribute('src', getAvatar());
 
-function getAvatar() {
-    const acc = JSON.parse(localStorage.getItem('user'));
-    const src = acc.user.avatar;
-    return src
-}
 
 // -----------  Account's links ---------------
 const linksWrap = document.createElement('div'); 
@@ -464,11 +461,13 @@ function changeNameOrPass(type, pattern) {
     const nameImgClose = document.createElement('img');
     nameImgClose.setAttribute('src', '../png/x_cross_delete_remove_icon_144023.svg')
     nameImgClose.classList.add('nameImgClose');
-    nameImgClose.onclick = () => {
+    nameImgClose.addEventListener('click', nameImgCloseHandler);
+    function nameImgCloseHandler() {
         wrap.classList.toggle('wrapNameActive');
         setTimeout(() => wrap.remove(), 300);
         openMark.style.display = 'block';
         addPianoListeners()
+        nameImgClose.removeEventListener('click', nameImgCloseHandler)
     }
 
     const case1 = document.createElement('input');
@@ -537,6 +536,7 @@ function changeNameOrPass(type, pattern) {
                     } else {textErr2.style.opacity = `1`}
                 } else {textErr1.style.opacity = `1`}
             } else {textErr1.style.opacity = `1`}
+        caseButt.removeEventListener('click', doCaseButt);
     }
 
     wrap.append(nameImgClose, case1, textErr1, case2, textErr2, caseButt);
@@ -613,5 +613,7 @@ function changeAvatar() {
 
 export {  
     root4,
-    buttonExit
+    buttonExit,
+    addPianoListeners,
+    avatar
 }

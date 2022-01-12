@@ -1,5 +1,5 @@
 import { checkForm } from "./functions.js";
-import { willVisible } from "./functions.js";
+import { changeVisible } from "./functions.js";
 import { pictureFirstShadow } from './script.js';
 
 const root2 = document.createElement('div');
@@ -35,8 +35,7 @@ const eye2 = document.createElement('img');
 eye2.setAttribute('src', '../png/eye-disible.svg');
 eye2.classList.add('eye2');
 
-eye1.onclick = () => willVisible(eye1, passwordInput);
-eye2.onclick = () => willVisible(eye2, repeatPasswordInput);
+
 
 
 // ---------------  Form  -----------
@@ -138,6 +137,10 @@ buttonRegistration.append('Log in');
 buttonRegistration.addEventListener('click', checkForm)
 // buttonRegistration.onclick = () => checkForm(entranceWrapper);
 
+// -------  Events  -------------
+eye1.addEventListener('click', changeVisible);
+eye2.addEventListener('click', changeVisible);
+
 // Luggage
 entranceWrapper.append(
     backMark, 
@@ -157,6 +160,8 @@ export { root2,
     invalidFormText1, 
     invalidFormText2,
     repeatPasswordInput,
-    passwordInput 
+    passwordInput,
+    eye1,
+    eye2
 };
 

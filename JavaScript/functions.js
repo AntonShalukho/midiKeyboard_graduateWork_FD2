@@ -19,7 +19,17 @@ import { emailEntranceInput } from './entrance.js';
 import { passwordEntranceInput } from './entrance.js';
 import { errorEntranceText } from './entrance.js';
 import { main } from './index.js';
+import { eye1 } from './registration.js'
+import { eye2 } from './registration.js'
+import { eye3 } from './entrance.js'
+import { addPianoListeners } from './piano.js'
+import { avatar } from './piano.js'
 //-------------------------- Function: visible password  ---------------------------
+function changeVisible(event) {
+    if (event.target == eye1) {willVisible(eye1, passwordInput)}
+    if (event.target == eye2) {willVisible(eye2, repeatPasswordInput)}
+    if (event.target == eye3) {willVisible(eye3, passwordEntranceInput)}
+}
 
 function willVisible(a, b) {
     if (a.src == 'http://127.0.0.1:5500/png/eye-disible.svg') {
@@ -109,7 +119,6 @@ async function setLocalInfo(form) {
     localStorage.setItem('users', JSON.stringify(acc));
     root2.style.display = 'none';
     pictureFirstShadow.style.zIndex = '1';
-    // location.reload()
 }
 
 // Create first user's function
@@ -139,7 +148,6 @@ async function setFirstLocalInfo(form) {
     localStorage.setItem('users', JSON.stringify(acc));
     root2.style.display = 'none';
     pictureFirstShadow.style.zIndex = '1';
-    // location.reload()
 }
 
 
@@ -212,6 +220,8 @@ function goToPiano() {
     buttonEnter.removeEventListener('click', getEnter) ;
     main.removeChild(root);
     main.append(root4);
+    addPianoListeners()
+    avatar.setAttribute('src', getAvatar());
 }
 
 // Entrance email's validation
@@ -269,6 +279,12 @@ async function setUser() {
     return box
 }
 
+function getAvatar() {
+    const acc = JSON.parse(localStorage.getItem('user'));
+    const src = acc.user.avatar;
+    return src
+}
+
 //--------------------------------------------------------  Exit  ------------------------------------
 
 function exitHandler() {
@@ -291,4 +307,4 @@ function exitHandler() {
 // }
 
 
-export { checkForm, switchToPiano, willVisible } 
+export { checkForm, switchToPiano, changeVisible, getAvatar } 

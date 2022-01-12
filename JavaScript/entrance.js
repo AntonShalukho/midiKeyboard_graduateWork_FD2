@@ -1,6 +1,6 @@
 import { pictureFirstShadow } from './script.js';
 import { switchToPiano } from './functions.js';
-import { willVisible } from './functions.js';
+import { changeVisible } from './functions.js';
 
 // ----------------------  Entrance form ---------------------------
 const root3 = document.createElement('div');
@@ -44,11 +44,12 @@ passwordEntranceInput.classList.add('formFactor');
 entranceForm.append(passwordEntranceInput);
 
 // Password eye
-const eye1 = document.createElement('img');
-eye1.setAttribute('src', '../png/eye-disible.svg');
-eye1.classList.add('eye3');
+const eye3 = document.createElement('img');
+eye3.setAttribute('src', '../png/eye-disible.svg');
+eye3.classList.add('eye3');
 
-eye1.onclick = () => willVisible(eye1, passwordEntranceInput);
+eye3.onclick = () => changeVisible;
+eye3.addEventListener('click', changeVisible);
 
 // Error text
 const errorEntranceText = document.createElement('div');
@@ -74,7 +75,13 @@ entranceButtons.append(entrance);
 
 
 // Luggage
-entranceWrapper.append(entranceForm, backEntranceMark, eye1);
+entranceWrapper.append(entranceForm, backEntranceMark, eye3);
 root3.append(entranceWrapper);
 
-export { root3, emailEntranceInput, passwordEntranceInput, errorEntranceText }
+export { 
+    root3, 
+    emailEntranceInput, 
+    passwordEntranceInput, 
+    errorEntranceText,
+    eye3 
+}
