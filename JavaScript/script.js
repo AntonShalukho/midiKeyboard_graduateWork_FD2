@@ -7,7 +7,7 @@ import { root3 } from './entrance.js';
     Site
 */
 
-const root = document.getElementById('root1');
+const root = document.createElement('div');
 root.classList.add('root1')
 
 /*
@@ -75,8 +75,7 @@ pictureFirst.append(pictureFirstShadow);
     luggage
 */
 
-root.append(clock);
-root.append(pictureFirst);
+root.append(clock, pictureFirst, root2, root3);
 
 /*
     Titles text enter

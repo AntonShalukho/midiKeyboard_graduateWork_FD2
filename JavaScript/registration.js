@@ -2,7 +2,7 @@ import { checkForm } from "./functions.js";
 import { willVisible } from "./functions.js";
 import { pictureFirstShadow } from './script.js';
 
-const root2 = document.getElementById('root2');
+const root2 = document.createElement('div');
 root2.classList.add('root2');
 
 //  Form container

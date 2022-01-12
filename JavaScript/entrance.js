@@ -3,7 +3,7 @@ import { switchToPiano } from './functions.js';
 import { willVisible } from './functions.js';
 
 // ----------------------  Entrance form ---------------------------
-const root3 = document.getElementById('root3');
+const root3 = document.createElement('div');
 root3.classList.add('root3');
 
 // Entrance wrapper
