@@ -52,7 +52,7 @@ function checkForm() {
 function getValid(form) {
     invalidFormText1.style.display = 'none';
     invalidFormText2.style.display = 'none';
-    invalidFormText1.textContent = 'User with same email has been registrationed';
+    invalidFormText1.textContent = 'User with same email has already been registered';
     if (getValidName(nameInput) && getValidName(surnameInput)) {
         console.log('1');
         if (getValidEmail(emailInput)) {
@@ -166,8 +166,6 @@ function getValidName(inp) {
 
 // Valid email's function
 function getValidEmail(email) {
-    // const r = /^(|(([A-Za-z0-9]+_+)|([A-Za-z0-9]+\-+)|([A-Za-z0-9]+\.+)|([A-Za-z0-9]+\++))*[A-Za-z0-9]+@((\w+\-+)|(\w+\.))*\w{1,63}\.[a-zA-Z]{2,6})$/i;
-    // const r = /^([\s]*?)([\d\D]{1,})+@([A-Za-z0-9]{1,15})+([.][A-Za-z0-9]{1,10})([\s]*?)$/i;
     const r = /^([a-z0-9!#$%&'*+/=?^_`{|}~-]{1,})+@([A-Za-z0-9]{1,15})+([.][A-Za-z0-9]{1,10})$/i;
     let acc = false;
 
@@ -267,17 +265,17 @@ function validEntrancePass() {
 
 //------------------------------------------------------   Account  ---------------------------------
 
-async function setUser() {
-    const response = await fetch('https://rickandmortyapi.com/api/character', {method: 'GET'});
-    const resolve = await response.json();
-    const box = document.createElement('div');
-    for (let i of resolve.results) {
-        const img = document.createElement('img');
-        img.setAttribute('src', `${i.image}`);
-        box.append(img);
-    }
-    return box
-}
+// async function setUser() {
+//     const response = await fetch('https://rickandmortyapi.com/api/character', {method: 'GET'});
+//     const resolve = await response.json();
+//     const box = document.createElement('div');
+//     for (let i of resolve.results) {
+//         const img = document.createElement('img');
+//         img.setAttribute('src', `${i.image}`);
+//         box.append(img);
+//     }
+//     return box
+// }
 
 function getAvatar() {
     const acc = JSON.parse(localStorage.getItem('user'));

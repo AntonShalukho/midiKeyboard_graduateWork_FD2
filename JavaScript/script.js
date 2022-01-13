@@ -30,7 +30,7 @@ pictureFirst.classList.add('picture');
 
 const pictureFirstContent1 = document.createElement('div');
 pictureFirstContent1.classList.add('pictureContent', 'pictureFirstContent1');
-pictureFirstContent1.append(`Would you like to learn how to play a piano?`);
+pictureFirstContent1.append(`Would you like to learn how to play the piano?`);
 pictureFirst.append(pictureFirstContent1);
 
 const pictureFirstContent2 = document.createElement('div');
@@ -81,7 +81,7 @@ root.append(clock, pictureFirst, root2, root3);
     Titles text enter
 */
 
-setTimeout((() => pictureFirstContent1.style.left = `28%`), 500);
+setTimeout((() => pictureFirstContent1.style.left = `27%`), 500);
 setTimeout((() => pictureFirstContent2.style.left = `31%`), 1500);
 setTimeout((() => pictureFirstContent3.style.left = `34%`), 2500);
 

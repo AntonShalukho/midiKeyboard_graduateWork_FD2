@@ -188,9 +188,7 @@ getWhiteAndBlackStyle()
 
 
 //---------------------------------  Events  ----------------------------------
-//my function
-// addPianoListeners();
-//---
+
 piano.addEventListener('mousedown', pushKeyDown);
 piano.addEventListener('mouseup', pushKeyUp);
 
@@ -228,10 +226,12 @@ linksWrap.classList.add('linksWrap');
 // Open and close mark
 const openMark = document.createElement('div');
 openMark.classList.add('openMark');
-openMark.onclick = () => {
+openMark.addEventListener('click', toggleOpenMark)
+
+function toggleOpenMark() {
     imgMark.classList.toggle('imgMarkActive');
     linksWrap.classList.toggle('linksWrapActive');
-    sayWelcome()
+    sayWelcome();
 }
 
 const imgMark = document.createElement('img');
@@ -264,7 +264,9 @@ const link2 = document.createElement('div');
 link2.classList.add('links', 'link2');
 link2.append('Change Name');
 const patForLink2 = '[A-Za-zА-Яа-яЁё-]{1,}';
-link2.onclick = () => {
+link2.addEventListener('click', openLink2)
+
+function openLink2() {
     openMark.style.display = 'none';
     changeNameOrPass('name', patForLink2);
 }
@@ -274,18 +276,12 @@ const link3 = document.createElement('div');
 link3.classList.add('links', 'link3');
 link3.append('Change Password');
 const patForLink3 = '[0-9A-Za-z]{6,20}';
-link3.onclick = () => {
+link3.addEventListener('click', openLink3);
+
+function openLink3() {
     openMark.style.display = 'none';
     changeNameOrPass('password', patForLink3);
 }
-
-
-// Avatar's Icons
-
-
-   
-
-
 
 
 // --------------------- Luggage --------------------------------
@@ -336,6 +332,7 @@ function getWhiteAndBlackStyle() {
 
 //---------------------------- Piano's functions -----------------------------------
 function pushKeyDown(event) {
+    console.log(event)
     forWhite:
     for (let i in whiteKeys) {
         if (whiteKeys[i].keyCode == event.target || i == event.code) {
@@ -452,6 +449,7 @@ function playSong(song) {
 // ------------------ Change name's or password's function --------------------------
 
 function changeNameOrPass(type, pattern) {
+    removePianoListeners()
     const stor1 = JSON.parse(localStorage.getItem('users'));
     const stor2 = JSON.parse(localStorage.getItem('user'));
     const wrap = document.createElement('form');
@@ -498,7 +496,6 @@ function changeNameOrPass(type, pattern) {
     caseButt.classList.add('links', 'caseButt');
     caseButt.addEventListener('click', doCaseButt);
     function doCaseButt() {
-        removePianoListeners()
         textErr1.style.opacity = `0`;
         textErr2.style.opacity = `0`;
             if (case1.value != '' || pattern.test(case1.value)) {

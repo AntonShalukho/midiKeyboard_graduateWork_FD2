@@ -19,7 +19,9 @@ entranceForm.classList.add('entranceForm');
 const backEntranceMark = document.createElement('img');
 backEntranceMark.setAttribute('src', '../png/backSVG.svg');
 backEntranceMark.classList.add('backEntranceMark');
-backEntranceMark.onclick = () => {
+backEntranceMark.addEventListener('click', removeFormEntrance);
+
+function removeFormEntrance() {
     pictureFirstShadow.style.zIndex = '1';
     root3.style.display = 'none';
 }
@@ -48,7 +50,6 @@ const eye3 = document.createElement('img');
 eye3.setAttribute('src', '../png/eye-disible.svg');
 eye3.classList.add('eye3');
 
-eye3.onclick = () => changeVisible;
 eye3.addEventListener('click', changeVisible);
 
 // Error text
@@ -57,7 +58,7 @@ errorEntranceText.classList.add('errorEntranceText');
 errorEntranceText.append('Invalid email or password');
 entranceForm.append(errorEntranceText);
 
-// Buttons entrance
+// Entrance's button 
 const entranceButtons = document.createElement('div');
 entranceButtons.classList.add('entranceButtons');
 entranceForm.append(entranceButtons);
@@ -66,12 +67,9 @@ const entrance = document.createElement('input');
 entrance.setAttribute('type', 'submit');
 entrance.setAttribute('value', 'Entrance');
 entrance.classList.add('butt');
-entrance.onclick = () => switchToPiano();
-
-
+entrance.addEventListener('click', switchToPiano)
 
 entranceButtons.append(entrance);
-
 
 
 // Luggage

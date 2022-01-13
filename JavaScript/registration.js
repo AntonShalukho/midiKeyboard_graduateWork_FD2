@@ -19,7 +19,8 @@ entranceWrapper.setAttribute('onsubmit', `return false`);
 const backMark = document.createElement('img');
 backMark.setAttribute('src', '../png/backSVG.svg');
 backMark.classList.add('backMark');
-backMark.addEventListener('click', removeBackMarkHandler)
+backMark.addEventListener('click', removeBackMarkHandler);
+
 function removeBackMarkHandler() {
     pictureFirstShadow.style.zIndex = '1';
     root2.style.display = 'none';
@@ -78,9 +79,6 @@ emailInput.setAttribute('type', 'email');
 emailInput.setAttribute('placeholder', 'Email');
 emailInput.setAttribute('required', 'true');
 emailInput.setAttribute('id', 'email');
-// emailInput.setAttribute('pattern', '^(|(([A-Za-z0-9]+_+)|([A-Za-z0-9]+\-+)|([A-Za-z0-9]+\.+)|([A-Za-z0-9]+\++))*[A-Za-z0-9]+@((\w+\-+)|(\w+\.))*\w{1,63}\.[a-zA-Z]{2,6})$/i');
-// emailInput.setAttribute('pattern', '/^([\s]*?)([\d\D]{1,})+@([A-Za-z0-9]{1,15})+([.][A-Za-z0-9]{1,10})([\s]*?)$/i');
-// emailInput.setAttribute('pattern', '([\d\D]{1,})+@([A-Za-z0-9]{1,15})+([.][A-Za-z0-9]{1,10})');
 emailInput.setAttribute('title', 'Invalid Email. Maybe you made space');
 emailInput.classList.add('formFactor');
 entranceName.append(emailInput);
@@ -89,7 +87,7 @@ entranceName.append(emailInput);
 const invalidFormText1 = document.createElement('div');
 invalidFormText1.classList.add('invalidFormText');
 invalidFormText1.classList.add('invalidFormText1');
-invalidFormText1.append('User with same email has been registrationed');
+invalidFormText1.append('User with same email has already been registered');
 entranceName.append(invalidFormText1);
 
 // Password
@@ -112,11 +110,13 @@ repeatPasswordInput.setAttribute('placeholder', 'Repeat password');
 repeatPasswordInput.setAttribute('required', 'true');
 repeatPasswordInput.classList.add('formFactor');
 entranceName.append(repeatPasswordInput);
-repeatPasswordInput.onkeyup = () => {
+repeatPasswordInput.addEventListener('keyup', getGreenBorderAfterValidation);
+
+function getGreenBorderAfterValidation() {
     if (passwordInput.value == repeatPasswordInput.value) {
-        repeatPasswordInput.style.border = `2px solid green`;
+        repeatPasswordInput.style.border = `1.5px solid green`;
     } else {
-        repeatPasswordInput.style.border = `2px solid red`
+        repeatPasswordInput.style.border = `1.5px solid red`;
     }
 }
 
@@ -129,13 +129,12 @@ entranceName.append(invalidFormText2);
 
 
 // Button registration
-const buttonRegistration = document.createElement('button');
+const buttonRegistration = document.createElement('input');
 buttonRegistration.setAttribute('type', 'submit');
 buttonRegistration.setAttribute('id', 'button');
+buttonRegistration.setAttribute('value', 'Log in');
 buttonRegistration.classList.add('butt', 'buttonRegistration');
-buttonRegistration.append('Log in');
-buttonRegistration.addEventListener('click', checkForm)
-// buttonRegistration.onclick = () => checkForm(entranceWrapper);
+buttonRegistration.addEventListener('click', checkForm);
 
 // -------  Events  -------------
 eye1.addEventListener('click', changeVisible);
