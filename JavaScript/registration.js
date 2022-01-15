@@ -23,7 +23,7 @@ backMark.addEventListener('click', removeBackMarkHandler);
 
 function removeBackMarkHandler() {
     pictureFirstShadow.style.zIndex = '1';
-    root2.style.display = 'none';
+    root2.remove()
 }
 
 // Password eye

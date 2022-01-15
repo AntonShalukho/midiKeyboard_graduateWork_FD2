@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap');
 @import url(./regStyle.css);
 @import url(./entranceStyle.css);
 @import url(./accountStyle.css);
@@ -34,6 +35,24 @@ body {
     position: absolute;
     left: -45%;
     transition-duration: 2s;
+}
+
+.message {
+    position: fixed;
+    top: 357px;
+    left: 628px;
+    color: yellow;
+    font-size: 33px;
+    background-color: grey;
+    width: 561px;
+    height: 196px;
+    z-index: 11;
+    border-radius: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition-duration: .5s;
 }
 
 .pictureShadow {

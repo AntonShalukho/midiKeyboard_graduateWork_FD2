@@ -25,20 +25,21 @@ note.classList.add('note');
 // Title
 const title = document.createElement('div');
 title.classList.add('title');
-title.append(`Просто выбери что понравилось или сочини сам:`);
+title.append(`Please choose the song in what you are interested in:`);
 
 // ------- Songs ------
 const songNames = document.createElement('div');
+songNames.classList.add('songNames');
 const song1 = document.createElement('div');
 const song2 = document.createElement('div');
 const song3 = document.createElement('div');
 const song1Text = document.createElement('div');
 const song2Text = document.createElement('div');
 const song3Text = document.createElement('div');
-song1.append(`In the end (Linkin park),`);
-song2.append(`Ёлочка,`);
+song1.append(`In the end (Linkin park)`);
+song2.append(`Ёлочка`);
 song3.append(`Песенка Мамонтёнка`);
-song1Text.append(`S..HH..F..DDD..DF / 3 раза`);
+song1Text.append(`S..HH..F..DDD..DF / 3 times`);
 song2Text.append(`G..DD..G..DD..GFDSA....H..KH..G..DD..GFDSA...H..KH..G..DD..GFDSA`);
 song3Text.append(`D..GGGG..H..D..GGGGG...A..HHHH.K..J.HGGGG...A..KJKJ.H..J.HG..G.J..SDF..HG`);
 
@@ -49,7 +50,7 @@ const butt = document.createElement('div');
 butt.classList.add('buttWrapper');
 
 const buttBack = document.createElement('div');
-buttBack.classList.add('buttBack');
+buttBack.classList.add('buttPlay');
 buttBack.append(`Back`);
 
 const buttPlay = document.createElement('div');
@@ -244,9 +245,11 @@ openMark.append(imgMark);
 const welcome = document.createElement('div');
 welcome.classList.add('welcome');
 function sayWelcome() {
-    const name = JSON.parse(localStorage.getItem('user')).user.name;
-    welcome.textContent = '';
-    welcome.append(`Welcome ${name}`);
+    if (localStorage.key('user')) {
+        const name = JSON.parse(localStorage.getItem('user')).user.name;
+        welcome.textContent = '';
+        welcome.append(`Welcome ${name}`);
+    }
 }
 sayWelcome()
 
@@ -332,7 +335,6 @@ function getWhiteAndBlackStyle() {
 
 //---------------------------- Piano's functions -----------------------------------
 function pushKeyDown(event) {
-    console.log(event)
     forWhite:
     for (let i in whiteKeys) {
         if (whiteKeys[i].keyCode == event.target || i == event.code) {
@@ -384,20 +386,39 @@ function pushKeyUp(event) {
 //------------------------------  Function for navigation of songs  ----------------------
 function typeButtBack(event) {
     if (event.target == buttBack) {
-        title.style.display = 'block'; 
+        title.textContent = `Please choose the song in what you are interested in:`; 
         songNames.style.display = 'block';
         Object.values(songObject).filter(el => el.text.style.display = 'none')
-        butt.style.display = 'none'
+        butt.style.display = 'none';
+        for (let i of idArray) {
+            clearTimeout(i)
+        }
+        for (let obj in whiteKeys) {
+            whiteKeys[obj].keyCode.style.backgroundColor = `white`;
+            whiteKeys[obj].keyCode.style.border = `1px solid black`;
+            whiteKeys[obj].keyCode.style.height = `90%`; 
+            whiteKeys[obj].keyCode.style.width = `90px`; 
+            whiteKeys[obj].audio.load(); 
+        }
+        for (let obj in blackKeys) {
+            blackKeys[obj].keyCode.style.borderBottom = `solid 0.8rem black`;
+            blackKeys[obj].keyCode.style.borderLeft = `solid 0.3rem black`;
+            blackKeys[obj].keyCode.style.height = `50%`; 
+            blackKeys[obj].audio.load(); 
+        }
+        idArray = [];
     }
 }
 
 function choiceSong(event) {
-    if (event.target == songObject[i].song) {
-        title.style.display = 'none'; 
-        songNames.style.display = 'none'; 
-        songObject[i].text.style.display = 'flex';
-        butt.style.display = 'flex'
-    }
+    Object.values(songObject).filter(obj => {
+        if (event.target == obj.song) {
+            title.textContent = `You can use either the keyboard or mouse`; 
+            songNames.style.display = 'none'; 
+            obj.text.style.display = 'flex';
+            butt.style.display = 'flex'
+        }
+    })
 }
 
 //--------------------------------------  Function for autoplay's songs  -----------------
@@ -414,6 +435,7 @@ function choiceSongForPlay(event) {
         }
     }
 }
+let idArray = [];
 
 function playSong(song) {
     const acc = song.split(' ');
@@ -423,26 +445,43 @@ function playSong(song) {
         
         for (let i in whiteKeys) {
             if (item == whiteKeys[i].keyName) {
-                setTimeout(() => {
+                let id = window.setTimeout(() => {
                     whiteKeys[i].keyCode.style.backgroundColor = `bisque`;
                     whiteKeys[i].keyCode.style.border = `3px solid black`;
                     whiteKeys[i].keyCode.style.height = `91%`; 
                     whiteKeys[i].keyCode.style.width = `6.36%`; 
                     whiteKeys[i].audio.play();
     
-                    setTimeout(() => {
+                    let id2 = setTimeout(() => {
                         whiteKeys[i].keyCode.style.backgroundColor = `white`;
                         whiteKeys[i].keyCode.style.border = `1px solid black`;
                         whiteKeys[i].keyCode.style.height = `90%`; 
                         whiteKeys[i].keyCode.style.width = `6.66%`; 
                         whiteKeys[i].audio.load();
                     }, 500)
+                    idArray.push(id2);
                 }, `${time1}`);
+                idArray.push(id)
                 time1 += 600; 
             }
         }
     })
 }
+
+// function playKeyDown(el) {
+//     whiteKeys[el].keyCode.style.backgroundColor = `bisque`;
+//     whiteKeys[el].keyCode.style.border = `3px solid black`;
+//     whiteKeys[el].keyCode.style.height = `91%`; 
+//     whiteKeys[el].keyCode.style.width = `6.36%`; 
+//     whiteKeys[el].audio.play();
+
+//     let id = window.setTimeout(playKeyUp, 500)
+// }
+// function playKeyUp() {
+
+// }
+
+
 
 
 
@@ -560,17 +599,16 @@ function changeAvatar() {
     iconsWrapper.append(icons);
     link1.setAttribute('disabled', 'disabled');
     link1.classList.toggle('link1Act');
-    icons.append(setUser());
-    icons.removeChild(icons.firstChild);
+    setUser()
     iconsWrapper.style.left = `-1084px`;
     iconsWrapper.addEventListener('click', removeAvatarsWrapper, {once: true});
     // Remove wrapper function 
     function removeAvatarsWrapper(event) {
         for (let i of icons.childNodes) {
 
-            if (event.target == i) {
+            if (event.target === i && event.target !== document.querySelector('.backAvatar')) {
                 avatar.setAttribute('src', `${i.src}`);
-                iconsWrapper.style.left = `152px`;
+                iconsWrapper.style.left = `190px`;
                 const acc1 = JSON.parse(localStorage.getItem('users'));
                 const acc2 = JSON.parse(localStorage.getItem('user'));
 
@@ -593,6 +631,11 @@ function changeAvatar() {
     async function setUser() {
         const response = await fetch('https://rickandmortyapi.com/api/character', {method: 'GET'});
         const resolve = await response.json();
+        const back = document.createElement('img');
+        back.classList.add('backAvatar');
+        back.setAttribute('src', '../png/closeSVG.svg');
+        icons.append(back);
+        back.addEventListener('click', removeWithoutChange, {once: true})
 
         for (let i of resolve.results) {
                 const img = document.createElement('img');
@@ -601,6 +644,13 @@ function changeAvatar() {
                 icons.append(img);
         }
     }  
+
+    function removeWithoutChange() {
+        iconsWrapper.style.left = `190px`;
+        link1.removeAttribute('disabled');
+        link1.classList.toggle('link1Act');
+        setTimeout(() => iconsWrapper.remove(), 500);
+    }
 } 
 
 /*

@@ -25,6 +25,15 @@ const pictureFirst = document.createElement('div');
 pictureFirst.classList.add('picture');
 
 /*
+    regMessage
+*/
+
+const message = document.createElement('div');
+message.classList.add('message');
+message.append('you have been successfully registered')
+pictureFirst.append(message);
+
+/*
     Titles
 */
 
@@ -75,7 +84,7 @@ pictureFirst.append(pictureFirstShadow);
     luggage
 */
 
-root.append(clock, pictureFirst, root2, root3);
+root.append(clock, pictureFirst);
 
 /*
     Titles text enter
@@ -92,9 +101,9 @@ setTimeout((() => pictureFirstContent3.style.left = `34%`), 2500);
 function getEnter(event) {
     pictureFirstShadow.style.zIndex = '10';
     if (event.target == buttonEnter) {
-        root3.style.display = 'block';
+        root.append(root3);
     } else if (event.target == buttonLogIn) {
-        root2.style.display = 'block';
+        root.append(root2);
     }
 }
 
@@ -129,5 +138,6 @@ export {
     root, 
     getEnter,
     buttonLogIn,
-    buttonEnter 
+    buttonEnter,
+    message 
 }

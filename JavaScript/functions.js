@@ -3,6 +3,7 @@ import { pictureFirstShadow } from './script.js';
 import { getEnter } from './script.js';
 import { buttonLogIn } from './script.js';
 import { buttonEnter } from './script.js';
+import { message } from './script.js';
 import { root } from './script.js';
 import { root2 } from './registration.js';
 import { root3 } from './entrance.js';
@@ -117,8 +118,10 @@ async function setLocalInfo(form) {
 
     acc[acc.length] = obj;
     localStorage.setItem('users', JSON.stringify(acc));
-    root2.style.display = 'none';
-    pictureFirstShadow.style.zIndex = '1';
+    message.style.opacity = '1';
+    setTimeout(() => message.style.opacity = '0', 2000)
+    setTimeout(() =>  pictureFirstShadow.style.zIndex = '1', 2500)
+    root2.remove();
 }
 
 // Create first user's function
@@ -146,8 +149,10 @@ async function setFirstLocalInfo(form) {
 
     let acc = [obj];
     localStorage.setItem('users', JSON.stringify(acc));
-    root2.style.display = 'none';
-    pictureFirstShadow.style.zIndex = '1';
+    message.style.opacity = '1';
+    setTimeout(() => message.style.opacity = '0', 2000)
+    setTimeout(() =>  pictureFirstShadow.style.zIndex = '1', 2500)
+    root2.remove();
 }
 
 
@@ -200,6 +205,7 @@ function switchToPiano() {
 
 function validEntrance() {
     if (validEntranceEmail() && validEntrancePass()) {
+        root3.remove()
         goToPiano()
     } else {
         errorEntranceText.classList.add('errorActive');
@@ -278,9 +284,11 @@ function validEntrancePass() {
 // }
 
 function getAvatar() {
-    const acc = JSON.parse(localStorage.getItem('user'));
-    const src = acc.user.avatar;
-    return src
+    if (localStorage.key('user')) {
+        const acc = JSON.parse(localStorage.getItem('user'));
+        const src = acc.user.avatar;
+        return src
+    }
 }
 
 //--------------------------------------------------------  Exit  ------------------------------------

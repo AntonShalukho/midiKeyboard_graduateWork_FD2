@@ -23,7 +23,7 @@ backEntranceMark.addEventListener('click', removeFormEntrance);
 
 function removeFormEntrance() {
     pictureFirstShadow.style.zIndex = '1';
-    root3.style.display = 'none';
+    root3.remove();
 }
 
 // Email
