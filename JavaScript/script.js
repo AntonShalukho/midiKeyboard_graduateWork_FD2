@@ -30,7 +30,7 @@ pictureFirst.classList.add('picture');
 
 const message = document.createElement('div');
 message.classList.add('message');
-message.append('you have been successfully registered')
+message.append('You have been successfully registered')
 pictureFirst.append(message);
 
 /*

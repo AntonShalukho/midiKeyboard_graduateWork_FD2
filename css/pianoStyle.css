@@ -1,6 +1,6 @@
 .root4 {
     margin: auto;
-    display: none;
+    display: flex;
     background: url(../png/png5.jpg);
     position: relative;
     width: 100vw;
@@ -185,4 +185,14 @@
 
 .backAvatar:active {
     box-shadow: 0px 0px 2px 2px #ff9800;
+}
+
+.eye4 {
+    top: 78px;
+    left: 198px;
+}
+
+.eye5 {
+    top: 142px;
+    left: 198px;
 }

@@ -56,7 +56,7 @@ nameInput.setAttribute('placeholder', 'Name');
 nameInput.setAttribute('required', 'true');
 nameInput.setAttribute('id', 'name');
 nameInput.setAttribute('pattern', '[-A-Za-zА-Яа-яЁё ]{1,15}');
-nameInput.setAttribute('title', 'The name have be Latin or Cyrillic letters');
+nameInput.setAttribute('title', 'The name should contain 1-15 letters either Latin or Cyrillic language');
 nameInput.classList.add('formFactor');
 entranceName.append(nameInput);
 
@@ -69,7 +69,7 @@ surnameInput.setAttribute('placeholder', 'Surname');
 surnameInput.setAttribute('required', 'true');
 surnameInput.setAttribute('id', 'surname');
 surnameInput.setAttribute('pattern', `[-A-Za-zА-Яа-яЁё ]{1,15}`);
-surnameInput.setAttribute('title', 'The name have be Latin or Cyrillic letters');
+surnameInput.setAttribute('title', 'The surname should contain 1-15 letters either Latin or Cyrillic language');
 surnameInput.classList.add('formFactor');
 entranceName.append(surnameInput);
 
@@ -79,7 +79,7 @@ emailInput.setAttribute('type', 'email');
 emailInput.setAttribute('placeholder', 'Email');
 emailInput.setAttribute('required', 'true');
 emailInput.setAttribute('id', 'email');
-emailInput.setAttribute('title', 'Invalid Email. Maybe you made space');
+emailInput.setAttribute('title', 'Invalid Email');
 emailInput.classList.add('formFactor');
 entranceName.append(emailInput);
 

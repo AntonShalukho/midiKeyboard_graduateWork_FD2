@@ -1,4 +1,4 @@
-import { getAvatar } from './functions.js'
+import { getAvatar } from './functions.js';
 
 // Body
 
@@ -60,7 +60,7 @@ buttPlay.append(`Play`);
 butt.append(buttBack, buttPlay);
 
 // Song's texts for function
-const song1TextContent = `S  H H  F  D D D  D F`;
+const song1TextContent = `S  H H  F  D D D  D F S  H H  F  D D D  D F S  H H  F  D D D  D F`;
 const song2TextContent = `G  D D  G  D D  G F D S A    H  K H  G  D D  G F D S A    H  K H  G  D D  G F D S A`;
 const song3TextContent = `D  G G G G  H  D  G G G G G  A  H H H H  K J  H G G G G  A  K J K J H J  H G  G J  S D F H G`;
 
@@ -390,23 +390,7 @@ function typeButtBack(event) {
         songNames.style.display = 'block';
         Object.values(songObject).filter(el => el.text.style.display = 'none')
         butt.style.display = 'none';
-        for (let i of idArray) {
-            clearTimeout(i)
-        }
-        for (let obj in whiteKeys) {
-            whiteKeys[obj].keyCode.style.backgroundColor = `white`;
-            whiteKeys[obj].keyCode.style.border = `1px solid black`;
-            whiteKeys[obj].keyCode.style.height = `90%`; 
-            whiteKeys[obj].keyCode.style.width = `90px`; 
-            whiteKeys[obj].audio.load(); 
-        }
-        for (let obj in blackKeys) {
-            blackKeys[obj].keyCode.style.borderBottom = `solid 0.8rem black`;
-            blackKeys[obj].keyCode.style.borderLeft = `solid 0.3rem black`;
-            blackKeys[obj].keyCode.style.height = `50%`; 
-            blackKeys[obj].audio.load(); 
-        }
-        idArray = [];
+        clearApi()
     }
 }
 
@@ -419,6 +403,26 @@ function choiceSong(event) {
             butt.style.display = 'flex'
         }
     })
+}
+
+function clearApi() {
+    for (let i of idArray) {
+        clearTimeout(i)
+    }
+    for (let obj in whiteKeys) {
+        whiteKeys[obj].keyCode.style.backgroundColor = `white`;
+        whiteKeys[obj].keyCode.style.border = `1px solid black`;
+        whiteKeys[obj].keyCode.style.height = `90%`; 
+        whiteKeys[obj].keyCode.style.width = `90px`; 
+        whiteKeys[obj].audio.load(); 
+    }
+    for (let obj in blackKeys) {
+        blackKeys[obj].keyCode.style.borderBottom = `solid 0.8rem black`;
+        blackKeys[obj].keyCode.style.borderLeft = `solid 0.3rem black`;
+        blackKeys[obj].keyCode.style.height = `50%`; 
+        blackKeys[obj].audio.load(); 
+    }
+    idArray = [];
 }
 
 //--------------------------------------  Function for autoplay's songs  -----------------
@@ -438,6 +442,7 @@ function choiceSongForPlay(event) {
 let idArray = [];
 
 function playSong(song) {
+    clearApi()
     const acc = song.split(' ');
     let time1 = 0;
 
@@ -468,22 +473,6 @@ function playSong(song) {
     })
 }
 
-// function playKeyDown(el) {
-//     whiteKeys[el].keyCode.style.backgroundColor = `bisque`;
-//     whiteKeys[el].keyCode.style.border = `3px solid black`;
-//     whiteKeys[el].keyCode.style.height = `91%`; 
-//     whiteKeys[el].keyCode.style.width = `6.36%`; 
-//     whiteKeys[el].audio.play();
-
-//     let id = window.setTimeout(playKeyUp, 500)
-// }
-// function playKeyUp() {
-
-// }
-
-
-
-
 
 // ------------------ Change name's or password's function --------------------------
 
@@ -491,10 +480,13 @@ function changeNameOrPass(type, pattern) {
     removePianoListeners()
     const stor1 = JSON.parse(localStorage.getItem('users'));
     const stor2 = JSON.parse(localStorage.getItem('user'));
+
+    // Wrapper
     const wrap = document.createElement('form');
     wrap.classList.add('linksWrap', 'wrapName');
     wrap.setAttribute('onsubmit', 'return false');
 
+    // Close button
     const nameImgClose = document.createElement('img');
     nameImgClose.setAttribute('src', '../png/x_cross_delete_remove_icon_144023.svg')
     nameImgClose.classList.add('nameImgClose');
@@ -503,12 +495,23 @@ function changeNameOrPass(type, pattern) {
         wrap.classList.toggle('wrapNameActive');
         setTimeout(() => wrap.remove(), 300);
         openMark.style.display = 'block';
-        addPianoListeners()
-        nameImgClose.removeEventListener('click', nameImgCloseHandler)
+        addPianoListeners();
+        nameImgClose.removeEventListener('click', nameImgCloseHandler);
+        eye4.removeEventListener('click', changeVisible);
+        eye5.removeEventListener('click', changeVisible);
     }
 
+    // First line
     const case1 = document.createElement('input');
-    case1.setAttribute('type', 'text');
+
+    if (type === 'password') {
+        case1.setAttribute('type', 'password');
+        case1.setAttribute('title', 'The password should be min six sings. Min one number, one uppercase and lowercase letter');
+    } else {
+        case1.setAttribute('type', 'text');
+        case1.setAttribute('title', 'The name should contain 1-15 letters either Latin or Cyrillic language');
+    }
+
     case1.setAttribute('placeholder', `Type your ${type}`)
     case1.setAttribute('required', 'true');
     case1.setAttribute('pattern', `${pattern}`);
@@ -518,8 +521,17 @@ function changeNameOrPass(type, pattern) {
     textErr1.classList.add('textErr');
     textErr1.append(`Invalid ${type}`)
 
+    // Second line
     const case2 = document.createElement('input');
-    case2.setAttribute('type', 'text');
+
+    if (type === 'password') {
+        case2.setAttribute('type', 'password');
+        case2.setAttribute('title', 'The password should be min six sings. Min one number, one uppercase and lowercase letter');
+    } else {
+        case2.setAttribute('type', 'text');
+        case2.setAttribute('title', 'The name should contain 1-15 letters either Latin or Cyrillic language');
+    }
+
     case2.setAttribute('placeholder', `Type next ${type}`)
     case2.setAttribute('required', 'true');
     case2.setAttribute('pattern', `${pattern}`);
@@ -529,6 +541,25 @@ function changeNameOrPass(type, pattern) {
     textErr2.classList.add('textErr');
     textErr2.append(`Invalid ${type}`)
 
+    // Eyes
+    const eye4 = document.createElement('img');
+    eye4.setAttribute('src', '../png/eye-disible.svg');
+    eye4.classList.add('eye4')
+    const eye5 = document.createElement('img');
+    eye5.setAttribute('src', '../png/eye-disible.svg');
+    eye5.classList.add('eye5')
+    eye4.addEventListener('click', changeVisible);
+    eye5.addEventListener('click', changeVisible);
+
+    if (type === 'password') {
+        eye4.style.display = 'block';
+        eye5.style.display = 'block';
+    } else {
+        eye4.style.display = 'none';
+        eye5.style.display = 'none';
+    }
+
+    // Button save 
     const caseButt = document.createElement('input');
     caseButt.setAttribute('type', 'submit');
     caseButt.setAttribute('value', 'Change');
@@ -569,17 +600,35 @@ function changeNameOrPass(type, pattern) {
                         setTimeout(() => wrap.remove(), 300);
                         openMark.style.display = 'block';
                         addPianoListeners()
+                        caseButt.removeEventListener('click', doCaseButt);
+                        eye4.removeEventListener('click', changeVisible);
+                        eye5.removeEventListener('click', changeVisible);
                     } else {textErr2.style.opacity = `1`}
                 } else {textErr1.style.opacity = `1`}
             } else {textErr1.style.opacity = `1`}
-        caseButt.removeEventListener('click', doCaseButt);
     }
 
-    wrap.append(nameImgClose, case1, textErr1, case2, textErr2, caseButt);
+    wrap.append(nameImgClose, case1, textErr1, case2, textErr2, caseButt, eye4, eye5);
     linksWrap.append(wrap);
     setTimeout(() => wrap.classList.toggle('wrapNameActive'), 100)
+
+    function changeVisible(event) {
+        if (event.target == eye4) {willVisible(eye4, case1)}
+        if (event.target == eye5) {willVisible(eye5, case2)}
+    }
+    
+    function willVisible(a, b) {
+        if (a.src == 'http://127.0.0.1:5500/png/eye-disible.svg') {
+            a.setAttribute('src', 'http://127.0.0.1:5500/png/eye-visible.svg')
+        } else {a.setAttribute('src', 'http://127.0.0.1:5500/png/eye-disible.svg')}
+    
+        if (b.type == 'password') {
+            b.setAttribute('type', 'text')
+        } else {b.setAttribute('type', 'password')}
+    }
 }
 
+// Functions which add or remove event key(up or down) 
 function addPianoListeners() {
     addEventListener('keydown', pushKeyDown);
     addEventListener('keyup', pushKeyUp);
@@ -651,7 +700,8 @@ function changeAvatar() {
         link1.classList.toggle('link1Act');
         setTimeout(() => iconsWrapper.remove(), 500);
     }
-} 
+}
+
 
 /*
     -----------  ____EXPORT____  ------------
@@ -661,6 +711,7 @@ function changeAvatar() {
 export {  
     root4,
     buttonExit,
+    avatar,
     addPianoListeners,
-    avatar
+    removePianoListeners,
 }

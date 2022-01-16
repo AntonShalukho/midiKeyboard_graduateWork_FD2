@@ -55,14 +55,11 @@ function getValid(form) {
     invalidFormText2.style.display = 'none';
     invalidFormText1.textContent = 'User with same email has already been registered';
     if (getValidName(nameInput) && getValidName(surnameInput)) {
-        console.log('1');
         if (getValidEmail(emailInput)) {
-            console.log('2');
             const arr = JSON.parse(localStorage.getItem('users'));
             let acc = true;
 
             if (arr != null || arr) {
-                console.log('3');
                 endFor:
                 for (let i of arr) {
                     if (i.user.email == emailInput.value) {
@@ -74,7 +71,6 @@ function getValid(form) {
             } 
 
             if (acc) {
-                console.log('4');
                 if (getValidPassword(passwordInput, repeatPasswordInput)) {
                     if (localStorage.getItem('users')) {
                         setLocalInfo(form);
@@ -214,10 +210,6 @@ function validEntrance() {
 
 function goToPiano() {
     errorEntranceText.classList.remove('errorActive');
-    root.style.display = 'none';
-    root2.style.display = 'none';
-    root3.style.display = 'none';
-    root4.style.display = 'flex';
     pictureFirstShadow.style.zIndex = '1';
     buttonExit.addEventListener('click', exitHandler);
     buttonLogIn.removeEventListener('click', getEnter);
@@ -271,17 +263,7 @@ function validEntrancePass() {
 
 //------------------------------------------------------   Account  ---------------------------------
 
-// async function setUser() {
-//     const response = await fetch('https://rickandmortyapi.com/api/character', {method: 'GET'});
-//     const resolve = await response.json();
-//     const box = document.createElement('div');
-//     for (let i of resolve.results) {
-//         const img = document.createElement('img');
-//         img.setAttribute('src', `${i.image}`);
-//         box.append(img);
-//     }
-//     return box
-// }
+
 
 function getAvatar() {
     if (localStorage.key('user')) {
@@ -294,8 +276,6 @@ function getAvatar() {
 //--------------------------------------------------------  Exit  ------------------------------------
 
 function exitHandler() {
-    root.style.display = 'block';
-    root4.style.display = 'none';
     buttonExit.removeEventListener('click', exitHandler);
     buttonLogIn.addEventListener('click', getEnter);
     buttonEnter.addEventListener('click', getEnter);
@@ -303,14 +283,6 @@ function exitHandler() {
     main.append(root);
 }
 
-// function changePages(main) {
-//     const root4 = document.createElement('div');
-//     root4.setAttribute('id', 'root4');
-//     const root5 = document.createElement('div');
-//     root5.setAttribute('id', 'root5');
-
-//     main.append(root4, root5)
-// }
 
 
 export { checkForm, switchToPiano, changeVisible, getAvatar } 
