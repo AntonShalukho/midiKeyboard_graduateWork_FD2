@@ -266,7 +266,7 @@ link1.addEventListener('click', changeAvatar);
 const link2 = document.createElement('div');
 link2.classList.add('links', 'link2');
 link2.append('Change Name');
-const patForLink2 = '[A-Za-zА-Яа-яЁё-]{1,}';
+const patForLink2 = '[A-Za-zА-Яа-яЁё-]{1,}'
 link2.addEventListener('click', openLink2)
 
 function openLink2() {
@@ -573,7 +573,7 @@ function changeNameOrPass(type, pattern) {
                     let pat;
                     if (type == 'name') {
                         pat = /^[A-Za-zА-Яа-яЁё-]{1,}$/;
-                    } else {pat = /[0-9A-Za-z]{6,20}/}
+                    } else {pat = /^[0-9A-Za-z]{6,20}$/}
                     if (case2.value != '' && pat.test(case2.value)) {
                         if (type == 'name') {
                             for (let el of stor1) {
