@@ -245,7 +245,7 @@ openMark.append(imgMark);
 const welcome = document.createElement('div');
 welcome.classList.add('welcome');
 function sayWelcome() {
-    if (localStorage.key('user')) {
+    if (JSON.parse(localStorage.getItem('user'))) {
         const name = JSON.parse(localStorage.getItem('user')).user.name;
         welcome.textContent = '';
         welcome.append(`Welcome ${name}`);

@@ -90,9 +90,9 @@ root.append(clock, pictureFirst);
     Titles text enter
 */
 
-setTimeout((() => pictureFirstContent1.style.left = `27%`), 500);
-setTimeout((() => pictureFirstContent2.style.left = `31%`), 1500);
-setTimeout((() => pictureFirstContent3.style.left = `34%`), 2500);
+// setTimeout((() => pictureFirstContent1.style.left = `27%`), 500);
+// setTimeout((() => pictureFirstContent2.style.left = `31%`), 1500);
+// setTimeout((() => pictureFirstContent3.style.left = `34%`), 2500);
 
 
  //      -----------------------    Clock's  function     ---------------------------

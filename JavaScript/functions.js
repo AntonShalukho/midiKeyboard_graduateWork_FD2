@@ -266,7 +266,7 @@ function validEntrancePass() {
 
 
 function getAvatar() {
-    if (localStorage.key('user')) {
+    if (JSON.parse(localStorage.getItem('user'))) {
         const acc = JSON.parse(localStorage.getItem('user'));
         const src = acc.user.avatar;
         return src

@@ -100,3 +100,99 @@
 .invalidFormText2 {
     top: 455px;
 }
+
+@media (orientation: landscape) and (min-width: 650px) and (max-width: 900px) {
+    .root2 {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100vw;
+        height: 100vh;
+        position: absolute;
+        top: 0px;
+        left: 0px;
+    }
+
+    .entranceWrapperReg {
+        height: 310px;
+        width: 610px;
+    }
+
+    .entranceName {
+        row-gap: 4px;
+    }
+
+    .nameTitle {
+        padding-bottom: 0px;
+    }
+
+    .invalidFormText {
+        left: 45px;
+    }
+
+    .invalidFormText1 {
+        top: 232px;
+        left: 4px;
+    }
+
+    .invalidFormText2 {
+        top: 232px;
+        left: 277px;
+    }
+
+    .eye1, .eye2 {
+        left: 231px;
+    }
+
+    .eye1 {
+        top: 323px;
+    }
+
+    .eye2 {
+        top: 397px;
+    }
+
+    .buttonRegistration {
+        margin-top: 20px;
+    }
+}
+
+@media (orientation: portrait) and (min-width: 320px) and (max-width: 475px) {
+    .root2 {
+        display: flex;
+        justify-content: center;
+        width: 100vw;
+        position: absolute;
+        top: 70px;
+        left: 0px;
+    }
+
+    .entranceWrapperReg {
+        height: 525px;
+        width: 310px;
+    }
+
+    .invalidFormText {
+        left: 45px;
+    }
+
+    .invalidFormText1 {
+        top: 279px;
+    }
+
+    .invalidFormText2 {
+        top: 440px;
+    }
+
+    .eye1, .eye2 {
+        left: 231px;
+    }
+
+    .eye1 {
+        top: 323px;
+    }
+
+    .eye2 {
+        top: 397px;
+    }
+}
