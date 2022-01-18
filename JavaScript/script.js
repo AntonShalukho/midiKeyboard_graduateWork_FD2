@@ -59,16 +59,16 @@ buttonWrapper.classList.add('buttonWrapper')
 
 const buttonEnter = document.createElement('div');
 buttonEnter.classList.add('button', 'buttonEnter');
-buttonEnter.append('Log on')
-buttonEnter.addEventListener('click', getEnter)
+buttonEnter.append('Log on');
+buttonEnter.addEventListener('click', getEnter);
 
 const buttonLogIn = document.createElement('div');
 buttonLogIn.classList.add('button', 'buttonLogIn');
-buttonLogIn.append('Log in')
-buttonLogIn.addEventListener('click', getEnter)
+buttonLogIn.append('Log in');
+buttonLogIn.addEventListener('click', getEnter);
 
-buttonWrapper.append(buttonEnter, buttonLogIn)
-pictureFirstContent3.append(buttonWrapper)
+buttonWrapper.append(buttonEnter, buttonLogIn);
+pictureFirstContent3.append(buttonWrapper);
 pictureFirst.append(pictureFirstContent3);
 
 
@@ -99,6 +99,7 @@ root.append(clock, pictureFirst);
 
 // get entrance and log function
 function getEnter(event) {
+    console.log(event.target)
     pictureFirstShadow.style.zIndex = '10';
     if (event.target == buttonEnter) {
         root.append(root3);

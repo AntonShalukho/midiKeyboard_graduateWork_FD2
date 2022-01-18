@@ -158,7 +158,7 @@
     display: flex; 
     justify-content: center;
     align-items: end; 
-    width: 90px; 
+    width: 6.6%; 
     height: 90%; 
     border-radius: 5%; 
     border: 1px solid black; 
@@ -195,4 +195,95 @@
 .eye5 {
     top: 142px;
     left: 198px;
+}
+
+@media (orientation: landscape) and (min-width: 650px) and (max-width: 900px) {
+    .root4 {
+        row-gap: 10px;
+        width: 100vw;
+        height: 100vh;
+    }
+
+    .songNames {
+        margin-left: calc((100vw - 80vw) - 90px);
+    }
+
+    .title {
+        font-size: 18px;
+        padding: 8px;
+    }
+
+    .song {
+        font-size: 16px;
+        margin: 0px 5px;
+    }
+
+    .text {
+        font-size: 16px;
+    }
+
+    .buttPlay {
+        font-size: 16px;
+        height: 24px;
+        margin: 4px 10px;
+        width: 10%;
+    }
+
+    .piano {
+        width: 650px;
+    }
+
+    .key {
+        font-size: 12px;
+    }
+
+    .buttonExit {
+        left: calc((100vw - 92vw) - 40px);
+        top: calc((100vh - 90vh) - 15px);
+    }
+}
+
+@media (orientation: portrait) and (min-width: 320px) and (max-width: 475px) {
+    .root4 {
+        transform: rotate(90deg);
+        top: 58.1vw;
+        left: 0px;
+        width: 100vh;
+        height: 100vw;
+        row-gap: 10px;
+    }
+
+    .songNames {
+        margin-left: calc((100vw - 80vw) - 90px);
+    }
+
+    .title {
+        font-size: 18px;
+        padding: 8px;
+    }
+
+    .song {
+        font-size: 16px;
+        margin: 0px 5px;
+    }
+
+    .text {
+        font-size: 16px;
+    }
+
+    .buttPlay {
+        font-size: 16px;
+        height: 24px;
+        margin: 4px 10px;
+        width: 10%;
+    }
+
+    .piano {
+        width: 650px;
+    }
+
+    .buttonExit {
+        left: calc((100vw - 92vw) - 40px);
+        top: calc((100vh - 90vh) - 15px);
+    }   
 }

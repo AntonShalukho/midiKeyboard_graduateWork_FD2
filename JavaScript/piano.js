@@ -317,9 +317,9 @@ function getWhiteAndBlackStyle() {
 
     for (let el in whiteKeys) {
         whiteKeys[el].keyCode.classList.add('key');
-        whiteKeys[el].keyCode.style.left = `${accKey}px`;
+        whiteKeys[el].keyCode.style.left = `${accKey}%`;
         whiteKeys[el].keyCode.append(whiteText[acc]);
-        accKey += 90;
+        accKey += 6.66;
         acc++
     }
 
@@ -341,7 +341,7 @@ function pushKeyDown(event) {
             whiteKeys[i].keyCode.style.backgroundColor = `bisque`;
             whiteKeys[i].keyCode.style.border = `3px solid black`;
             whiteKeys[i].keyCode.style.height = `91%`; 
-            whiteKeys[i].keyCode.style.width = `86px`; 
+            whiteKeys[i].keyCode.style.width = `6.3%`; 
             whiteKeys[i].audio.play(); 
             break forWhite
         }
@@ -365,7 +365,7 @@ function pushKeyUp(event) {
             whiteKeys[i].keyCode.style.backgroundColor = `white`;
             whiteKeys[i].keyCode.style.border = `1px solid black`;
             whiteKeys[i].keyCode.style.height = `90%`; 
-            whiteKeys[i].keyCode.style.width = `90px`; 
+            whiteKeys[i].keyCode.style.width = `6.6%`; 
             whiteKeys[i].audio.load(); 
             break forWhite
         }
