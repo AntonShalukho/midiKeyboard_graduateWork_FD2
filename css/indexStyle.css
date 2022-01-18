@@ -40,8 +40,8 @@ body {
 
 .message {
     position: fixed;
-    top: 357px;
-    left: 628px;
+    top: calc((100vh - 50vh) - 98px);
+    left: calc((100vw - 50vw) - 280px);
     color: yellow;
     font-size: 33px;
     background-color: grey;
@@ -67,14 +67,17 @@ body {
 
 .pictureFirstContent1 {
     top: 25%; 
+    left: calc((100vw - 50vw) - 412px);
 }
 
 .pictureFirstContent2 {
     top: 38%; 
+    left: calc((100vw - 50vw) - 336px);
 }
 
 .pictureFirstContent3 { 
     top: 58%; 
+    left: calc((100vw - 50vw) - 275px);
 }
 
 .buttonWrapper {
@@ -111,6 +114,107 @@ body {
     left: 360px;
 }
 
+@media (orientation: landscape) and (min-width: 800px) and (max-width: 1300px) {
+    .clock {
+        padding-left: 15px;
+        font-size: 10vh;
+        width: 80%;
+        height: 10vh;
+    }
+
+    .picture {
+        background: url(../png/png3.jpg) repeat;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-evenly;
+    }
+
+    .message {
+        top: calc((100vh - 50vh) - 94px);
+        left: calc((100vw - 50vw) - 225px);
+        width: 450px;
+        height: 188px;
+        font-size: 28px;
+    }
+
+    .pictureContent {
+        position: relative;
+        top: 0px;
+        left: 0px;
+        text-align: center;
+        padding: 0px 15px;
+        font-size: 28px;
+    }
+
+    .buttonWrapper {
+        display: flex;
+        width: 229px;
+        position: relative;
+        top: 0px;
+        left: 0px;
+        flex-direction: column;
+        align-items: center;
+        height: 130px;
+    }
+
+    .button {
+        position: relative;
+        top: 0px;
+        left: 0px;
+    }
+}
+
+@media (orientation: portrait) and (min-width: 480px) and (max-width: 900px) {
+    .clock {
+        padding-left: 15px;
+        font-size: 5vh;
+        width: 80%;
+    }
+
+    .picture {
+        background: url(../png/png3.jpg) repeat;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-evenly;
+    } 
+
+    .message {
+        top: calc((100vh - 50vh) - 94px);
+        left: calc((100vw - 50vw) - 225px);
+        width: 450px;
+        height: 188px;
+        font-size: 28px;
+    }
+
+    .pictureContent {
+        position: relative;
+        top: 0px;
+        left: 0px;
+        text-align: center;
+        padding: 0px 15px;
+        font-size: 28px;
+    }
+
+    .buttonWrapper {
+        display: flex;
+        width: 229px;
+        position: relative;
+        top: 0px;
+        left: 0px;
+        flex-direction: column;
+        align-items: center;
+        height: 169px;
+    }
+
+    .button {
+        position: relative;
+        top: 0px;
+        left: 0px;
+    }
+}
+
 @media (orientation: landscape) and (min-width: 650px) and (max-width: 900px) {
     .clock {
         padding-left: 15px;
@@ -125,6 +229,11 @@ body {
         flex-direction: column;
         align-items: center;
         justify-content: space-evenly;
+    }
+
+    .message {
+        top: 110px;
+        left: 144px;
     }
 
     .pictureContent {
@@ -168,6 +277,14 @@ body {
         align-items: center;
         justify-content: space-evenly;
     } 
+
+    .message {
+        top: 298px;
+        left: calc((100vw - 50vw) - 155px);
+        width: 310px;
+        height: 126px;
+        font-size: 20px;
+    }
 
     .pictureContent {
         position: relative;

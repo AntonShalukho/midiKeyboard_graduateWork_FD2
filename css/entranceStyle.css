@@ -1,8 +1,8 @@
 .root3 {
     display: block;
     position: fixed;
-    top: 305px;
-    left: 720px;
+    top: calc((100vh - 50vh) - 145px);
+    left: calc((100vw - 50vw) - 189px);
     z-index: 11;
 }
 
@@ -71,6 +71,49 @@
 .errorActive {
     color: red;
     cursor: context-menu;
+}
+
+@media (orientation: landscape) and (min-width: 800px) and (max-width: 1300px) {
+    .root3 {
+        display: flex;
+        justify-content: center;
+        position: absolute;
+        top: 20%;
+        left: 0px;
+        width: 100vw;
+        
+    }
+
+    .entranceWrapper {
+        width: 300px;
+        height: 250px;
+        align-self: center;
+    }
+
+    .eye3 {
+        top: 92px;
+        left: 224px;
+    }
+}
+
+@media (orientation: portrait) and (min-width: 480px) and (max-width: 900px) {
+    .root3 {
+        display: flex;
+        justify-content: center;
+        position: absolute;
+        top: 30%;
+        left: 0px;
+        width: 100vw;
+    }
+
+    .entranceWrapper {
+        width: 300px;
+        align-self: center;
+    }
+
+    .eye3 {
+        left: 224px;
+    }
 }
 
 @media (orientation: landscape) and (min-width: 650px) and (max-width: 900px) {
