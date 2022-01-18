@@ -197,6 +197,14 @@
     left: 198px;
 }
 
+.iconsWrapperActive1 {
+    left: calc(-30vw - 542px);
+}
+
+.iconsWrapperActive2 {
+    left: calc(-30vw - 411px);
+}
+
 @media (orientation: landscape) and (min-width: 650px) and (max-width: 900px) {
     .root4 {
         row-gap: 10px;
@@ -234,12 +242,21 @@
     }
 
     .key {
-        font-size: 12px;
+        font-size: 11px;
     }
+
 
     .buttonExit {
         left: calc((100vw - 92vw) - 40px);
         top: calc((100vh - 90vh) - 15px);
+    }
+
+    .eye4 {
+        top: 54px;
+    }
+
+    .eye5 {
+        top: 119px;
     }
 }
 
@@ -282,8 +299,21 @@
         width: 650px;
     }
 
+    .key {
+        font-size: 11px;
+    }
+
+
     .buttonExit {
         left: calc((100vw - 92vw) - 40px);
         top: calc((100vh - 90vh) - 15px);
-    }   
+    }
+
+    .eye4 {
+        top: 54px;
+    }
+
+    .eye5 {
+        top: 119px;
+    }
 }

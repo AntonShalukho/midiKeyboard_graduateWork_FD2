@@ -192,6 +192,8 @@ getWhiteAndBlackStyle()
 
 piano.addEventListener('mousedown', pushKeyDown);
 piano.addEventListener('mouseup', pushKeyUp);
+piano.addEventListener('touchstart', pushKeyDown);
+piano.addEventListener('touchend', pushKeyUp);
 
 note.addEventListener('click', choiceSongForPlay);
 note.addEventListener('click', typeButtBack);
@@ -413,7 +415,7 @@ function clearApi() {
         whiteKeys[obj].keyCode.style.backgroundColor = `white`;
         whiteKeys[obj].keyCode.style.border = `1px solid black`;
         whiteKeys[obj].keyCode.style.height = `90%`; 
-        whiteKeys[obj].keyCode.style.width = `90px`; 
+        whiteKeys[obj].keyCode.style.width = `6.6%`; 
         whiteKeys[obj].audio.load(); 
     }
     for (let obj in blackKeys) {
@@ -649,7 +651,11 @@ function changeAvatar() {
     link1.setAttribute('disabled', 'disabled');
     link1.classList.toggle('link1Act');
     setUser()
-    iconsWrapper.style.left = `-1084px`;
+    if (window.screen.width < 900) {
+        iconsWrapper.classList.toggle('iconsWrapperActive2');
+    } else {
+        iconsWrapper.classList.toggle('iconsWrapperActive1');
+    }
     iconsWrapper.addEventListener('click', removeAvatarsWrapper, {once: true});
     // Remove wrapper function 
     function removeAvatarsWrapper(event) {
@@ -657,7 +663,11 @@ function changeAvatar() {
 
             if (event.target === i && event.target !== document.querySelector('.backAvatar')) {
                 avatar.setAttribute('src', `${i.src}`);
-                iconsWrapper.style.left = `190px`;
+                if (window.screen.width < 900) {
+                    iconsWrapper.classList.toggle('iconsWrapperActive2');
+                } else {
+                    iconsWrapper.classList.toggle('iconsWrapperActive1');
+                }
                 const acc1 = JSON.parse(localStorage.getItem('users'));
                 const acc2 = JSON.parse(localStorage.getItem('user'));
 
