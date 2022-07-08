@@ -17,11 +17,24 @@ entranceWrapper.setAttribute('onsubmit', `return false`);
 
 // Back mark
 const backMark = document.createElement('img');
-const backSVG = fetch('https://github.com/AntonSheluho/JavaScript-diplom/blob/main/png/backSVG.svg');
-backSVG.then(res => backMark.setAttribute('src', res)).catch(err => console.log('error BackSVG: ', err))
+getBackSVG()
+// const backSVG = new Promise((res, rej) => {
+//     fetch('https://github.com/AntonSheluho/JavaScript-diplom/blob/main/png/backSVG.svg')
+//     .then(rez => rez.json())
+//     .then(img => backMark.setAttribute('src', img))
+//     .catch(err => rej(console.log('error: ', err)))
+// })
+// const backSVG = fetch('https://github.com/AntonSheluho/JavaScript-diplom/blob/main/png/backSVG.svg');
+// backSVG.then(res => backMark.setAttribute('src', res)).catch(err => console.log('error BackSVG: ', err))
 // backMark.setAttribute('src', '../png/backSVG.svg');
 backMark.classList.add('backMark');
 backMark.addEventListener('click', removeBackMarkHandler);
+
+async function getBackSVG() {
+    const res = await fetch('https://github.com/AntonSheluho/JavaScript-diplom/blob/main/png/backSVG.svg')
+    const rez = await res.json()
+    backMark.setAttribute('src', rez)
+}
 
 function removeBackMarkHandler() {
     pictureFirstShadow.style.zIndex = '1';
