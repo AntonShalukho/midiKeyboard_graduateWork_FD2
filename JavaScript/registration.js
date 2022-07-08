@@ -17,24 +17,9 @@ entranceWrapper.setAttribute('onsubmit', `return false`);
 
 // Back mark
 const backMark = document.createElement('img');
-// getBackSVG()
-// const backSVG = new Promise((res, rej) => {
-//     fetch('https://github.com/AntonSheluho/JavaScript-diplom/blob/main/png/backSVG.svg')
-//     .then(rez => rez.json())
-//     .then(img => backMark.setAttribute('src', img))
-//     .catch(err => rej(console.log('error: ', err)))
-// })
-// const backSVG = fetch('https://github.com/AntonSheluho/JavaScript-diplom/blob/main/png/backSVG.svg');
-// backSVG.then(res => backMark.setAttribute('src', res)).catch(err => console.log('error BackSVG: ', err))
-backMark.setAttribute('src', 'https://services.garmin.cn/appsLibraryBusinessServices_v0/rest/apps/d7bd430c-f443-4aaa-b7d3-993a22b1b1f4/icon/c11c5660-48d4-408a-bcf0-20f433f05ee4');
+backMark.setAttribute('src', 'https://raw.githubusercontent.com/AntonSheluho/JavaScript-diplom/da54d865300c0796c720ee75490a88673b9e8a60/png/backSVG.svg');
 backMark.classList.add('backMark');
 backMark.addEventListener('click', removeBackMarkHandler);
-
-// async function getBackSVG() {
-//     const res = await fetch('https://github.com/AntonSheluho/JavaScript-diplom/blob/main/png/backSVG.svg')
-//     const rez = await res.json()
-//     backMark.setAttribute('src', rez)
-// }
 
 function removeBackMarkHandler() {
     pictureFirstShadow.style.zIndex = '1';
@@ -44,12 +29,12 @@ function removeBackMarkHandler() {
 // Password eye
 const eye1 = document.createElement('img');
 // eye1.setAttribute('src', '../png/eye-disible.svg');
-eye1.setAttribute('src', 'https://cdn1.iconfinder.com/data/icons/hawcons/32/699007-icon-21-eye-hidden-512.png');
+eye1.setAttribute('src', 'http://127.0.0.1:5500/png/eye-disible.svg');
 eye1.classList.add('eye1');
 
 // Password eye 2
 const eye2 = document.createElement('img');
-eye2.setAttribute('src', 'https://cdn1.iconfinder.com/data/icons/hawcons/32/699007-icon-21-eye-hidden-512.png');
+eye2.setAttribute('src', 'http://127.0.0.1:5500/png/eye-disible.svg');
 // eye2.setAttribute('src', '../png/eye-disible.svg');
 eye2.classList.add('eye2');
 
