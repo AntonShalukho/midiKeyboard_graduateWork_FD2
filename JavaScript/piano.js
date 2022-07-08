@@ -490,7 +490,7 @@ function changeNameOrPass(type, pattern) {
 
     // Close button
     const nameImgClose = document.createElement('img');
-    nameImgClose.setAttribute('src', '../png/x_cross_delete_remove_icon_144023.svg')
+    nameImgClose.setAttribute('src', 'http://127.0.0.1:5500/png/x_cross_delete_remove_icon_144023.svg')
     nameImgClose.classList.add('nameImgClose');
     nameImgClose.addEventListener('click', nameImgCloseHandler);
     function nameImgCloseHandler() {
