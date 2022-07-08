@@ -17,7 +17,9 @@ entranceWrapper.setAttribute('onsubmit', `return false`);
 
 // Back mark
 const backMark = document.createElement('img');
-backMark.setAttribute('src', '../png/backSVG.svg');
+const backSVG = fetch('https://github.com/AntonSheluho/JavaScript-diplom/blob/main/png/backSVG.svg');
+backSVG.then(res => backMark.setAttribute('src', res)).catch(err => console.log('error BackSVG: ', err))
+// backMark.setAttribute('src', '../png/backSVG.svg');
 backMark.classList.add('backMark');
 backMark.addEventListener('click', removeBackMarkHandler);
 
