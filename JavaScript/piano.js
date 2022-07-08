@@ -239,7 +239,7 @@ function toggleOpenMark() {
 
 const imgMark = document.createElement('img');
 imgMark.classList.add('imgMark');
-imgMark.setAttribute('src', '../png/closeSVG.svg');
+imgMark.setAttribute('src', 'https://raw.githubusercontent.com/AntonSheluho/JavaScript-diplom/dac1916e046aeedc54deef1bd3413f0657944ba6/png/closeSVG.svg');
 
 openMark.append(imgMark);
 
@@ -545,10 +545,10 @@ function changeNameOrPass(type, pattern) {
 
     // Eyes
     const eye4 = document.createElement('img');
-    eye4.setAttribute('src', '../png/eye-disible.svg');
+    eye4.setAttribute('src', 'http://127.0.0.1:5500/png/eye-disible.svg');
     eye4.classList.add('eye4')
     const eye5 = document.createElement('img');
-    eye5.setAttribute('src', '../png/eye-disible.svg');
+    eye5.setAttribute('src', 'http://127.0.0.1:5500/png/eye-disible.svg');
     eye5.classList.add('eye5')
     eye4.addEventListener('click', changeVisible);
     eye5.addEventListener('click', changeVisible);
@@ -692,7 +692,7 @@ function changeAvatar() {
         const resolve = await response.json();
         const back = document.createElement('img');
         back.classList.add('backAvatar');
-        back.setAttribute('src', '../png/closeSVG.svg');
+        back.setAttribute('src', 'https://raw.githubusercontent.com/AntonSheluho/JavaScript-diplom/main/png/closeSVG.svg');
         icons.append(back);
         back.addEventListener('click', removeWithoutChange, {once: true})
 
