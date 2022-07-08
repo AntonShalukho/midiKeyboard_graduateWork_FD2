@@ -26,7 +26,7 @@ const backMark = document.createElement('img');
 // })
 // const backSVG = fetch('https://github.com/AntonSheluho/JavaScript-diplom/blob/main/png/backSVG.svg');
 // backSVG.then(res => backMark.setAttribute('src', res)).catch(err => console.log('error BackSVG: ', err))
-backMark.setAttribute('src', 'https://github.com/AntonSheluho/JavaScript-diplom/blob/main/png/backSVG.svg');
+backMark.setAttribute('src', 'https://services.garmin.cn/appsLibraryBusinessServices_v0/rest/apps/d7bd430c-f443-4aaa-b7d3-993a22b1b1f4/icon/c11c5660-48d4-408a-bcf0-20f433f05ee4');
 backMark.classList.add('backMark');
 backMark.addEventListener('click', removeBackMarkHandler);
 
