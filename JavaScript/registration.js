@@ -43,12 +43,14 @@ function removeBackMarkHandler() {
 
 // Password eye
 const eye1 = document.createElement('img');
-eye1.setAttribute('src', '../png/eye-disible.svg');
+// eye1.setAttribute('src', '../png/eye-disible.svg');
+eye1.setAttribute('src', 'https://cdn1.iconfinder.com/data/icons/hawcons/32/699007-icon-21-eye-hidden-512.png');
 eye1.classList.add('eye1');
 
 // Password eye 2
 const eye2 = document.createElement('img');
-eye2.setAttribute('src', '../png/eye-disible.svg');
+eye2.setAttribute('src', 'https://cdn1.iconfinder.com/data/icons/hawcons/32/699007-icon-21-eye-hidden-512.png');
+// eye2.setAttribute('src', '../png/eye-disible.svg');
 eye2.classList.add('eye2');
 
 

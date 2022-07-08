@@ -21,6 +21,8 @@
 
 .backMark {
     width: 30px;
+    height: 30px;
+    /* background-image: url('https://services.garmin.cn/appsLibraryBusinessServices_v0/rest/apps/d7bd430c-f443-4aaa-b7d3-993a22b1b1f4/icon/c11c5660-48d4-408a-bcf0-20f433f05ee4'); */
     cursor: pointer;
     position: absolute;
     left: 0px;
