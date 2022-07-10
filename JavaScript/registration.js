@@ -29,12 +29,12 @@ function removeBackMarkHandler() {
 // Password eye
 const eye1 = document.createElement('img');
 // eye1.setAttribute('src', '../png/eye-disible.svg');
-eye1.setAttribute('src', 'http://127.0.0.1:5500/png/eye-disible.svg');
+eye1.setAttribute('src', 'https://raw.githubusercontent.com/AntonShalukho/midiKeyboard_graduateWork_FD2/main/png/eye-disible.svg');
 eye1.classList.add('eye1');
 
 // Password eye 2
 const eye2 = document.createElement('img');
-eye2.setAttribute('src', 'http://127.0.0.1:5500/png/eye-disible.svg');
+eye2.setAttribute('src', 'https://raw.githubusercontent.com/AntonShalukho/midiKeyboard_graduateWork_FD2/main/png/eye-disible.svg');
 // eye2.setAttribute('src', '../png/eye-disible.svg');
 eye2.classList.add('eye2');
 

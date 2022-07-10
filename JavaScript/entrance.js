@@ -17,7 +17,7 @@ entranceForm.classList.add('entranceForm');
 
 // Back mark
 const backEntranceMark = document.createElement('img');
-backEntranceMark.setAttribute('src', 'http://127.0.0.1:5500/png/backSVG.svg');
+backEntranceMark.setAttribute('src', 'https://raw.githubusercontent.com/AntonShalukho/midiKeyboard_graduateWork_FD2/main/png/backSVG.svg');
 backEntranceMark.classList.add('backEntranceMark');
 backEntranceMark.addEventListener('click', removeFormEntrance);
 
@@ -47,7 +47,7 @@ entranceForm.append(passwordEntranceInput);
 
 // Password eye
 const eye3 = document.createElement('img');
-eye3.setAttribute('src', 'http://127.0.0.1:5500/png/eye-disible.svg');
+eye3.setAttribute('src', 'https://raw.githubusercontent.com/AntonShalukho/midiKeyboard_graduateWork_FD2/main/png/eye-disible.svg');
 eye3.classList.add('eye3');
 
 eye3.addEventListener('click', changeVisible);

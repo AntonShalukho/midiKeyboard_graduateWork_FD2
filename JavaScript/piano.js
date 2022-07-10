@@ -545,10 +545,10 @@ function changeNameOrPass(type, pattern) {
 
     // Eyes
     const eye4 = document.createElement('img');
-    eye4.setAttribute('src', 'http://127.0.0.1:5500/png/eye-disible.svg');
+    eye4.setAttribute('src', 'https://raw.githubusercontent.com/AntonShalukho/midiKeyboard_graduateWork_FD2/main/png/eye-disible.svg');
     eye4.classList.add('eye4')
     const eye5 = document.createElement('img');
-    eye5.setAttribute('src', 'http://127.0.0.1:5500/png/eye-disible.svg');
+    eye5.setAttribute('src', 'https://raw.githubusercontent.com/AntonShalukho/midiKeyboard_graduateWork_FD2/main/png/eye-disible.svg');
     eye5.classList.add('eye5')
     eye4.addEventListener('click', changeVisible);
     eye5.addEventListener('click', changeVisible);
@@ -620,9 +620,9 @@ function changeNameOrPass(type, pattern) {
     }
     
     function willVisible(a, b) {
-        if (a.src == 'http://127.0.0.1:5500/png/eye-disible.svg') {
-            a.setAttribute('src', 'http://127.0.0.1:5500/png/eye-visible.svg')
-        } else {a.setAttribute('src', 'http://127.0.0.1:5500/png/eye-disible.svg')}
+        if (a.src == 'https://raw.githubusercontent.com/AntonShalukho/midiKeyboard_graduateWork_FD2/main/png/eye-disible.svg') {
+            a.setAttribute('src', 'https://raw.githubusercontent.com/AntonShalukho/midiKeyboard_graduateWork_FD2/main/png/eye-visible.svg')
+        } else {a.setAttribute('src', 'https://raw.githubusercontent.com/AntonShalukho/midiKeyboard_graduateWork_FD2/main/png/eye-disible.svg')}
     
         if (b.type == 'password') {
             b.setAttribute('type', 'text')

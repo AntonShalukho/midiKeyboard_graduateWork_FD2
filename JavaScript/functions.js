@@ -33,9 +33,9 @@ function changeVisible(event) {
 }
 
 function willVisible(a, b) {
-    if (a.src == 'http://127.0.0.1:5500/png/eye-disible.svg') {
-        a.setAttribute('src', 'http://127.0.0.1:5500/png/eye-visible.svg')
-    } else {a.setAttribute('src', 'http://127.0.0.1:5500/png/eye-disible.svg')}
+    if (a.src == 'https://raw.githubusercontent.com/AntonShalukho/midiKeyboard_graduateWork_FD2/main/png/eye-disible.svg') {
+        a.setAttribute('src', 'https://raw.githubusercontent.com/AntonShalukho/midiKeyboard_graduateWork_FD2/main/png/eye-visible.svg')
+    } else {a.setAttribute('src', 'https://raw.githubusercontent.com/AntonShalukho/midiKeyboard_graduateWork_FD2/main/png/eye-disible.svg')}
 
     if (b.type == 'password') {
         b.setAttribute('type', 'text')
