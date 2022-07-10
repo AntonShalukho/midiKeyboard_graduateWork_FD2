@@ -116,7 +116,7 @@ async function setLocalInfo(form) {
     localStorage.setItem('users', JSON.stringify(acc));
     message.style.opacity = '1';
     setTimeout(() => message.style.opacity = '0', 2000)
-    setTimeout(() =>  pictureFirstShadow.style.zIndex = '1', 2500)
+    setTimeout(() =>  {pictureFirstShadow.style.zIndex = '1';message.style.display = 'flex' }, 2500)
     root2.remove();
 }
 

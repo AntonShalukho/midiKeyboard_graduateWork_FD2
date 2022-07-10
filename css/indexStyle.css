@@ -235,6 +235,7 @@ body {
         top: 110px;
         left: 144px;
         font-size: 19px;
+        display: none;
     }
 
     .pictureContent {
